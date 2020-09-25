@@ -16,13 +16,6 @@
     </url>
 
     <url>
-        <loc>http://www.gnn.wiki/tags/Application/</loc>
-        <lastmod>2020-09-25T00:59:19.195Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.gnn.wiki/tags/Edge-Features/</loc>
         <lastmod>2020-09-25T00:59:19.196Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,13 +25,6 @@
     <url>
         <loc>http://www.gnn.wiki/tags/Papers/</loc>
         <lastmod>2020-09-25T00:59:19.201Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.gnn.wiki/tags/Pre-train/</loc>
-        <lastmod>2020-09-25T00:59:19.206Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -151,6 +137,20 @@
     <url>
         <loc>http://www.gnn.wiki/tags/Community-Detection/</loc>
         <lastmod>2020-09-25T00:59:19.227Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.gnn.wiki/tags/Application/</loc>
+        <lastmod>2020-09-25T02:09:53.634Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.gnn.wiki/tags/Pre-train/</loc>
+        <lastmod>2020-09-25T02:12:05.028Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
