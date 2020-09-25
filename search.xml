@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test.md]]></title>
-    <url>%2Farticle%2Ftest-md%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[GPT-GNN]]></title>
     <url>%2Farticle%2FGPT-GNN%2F</url>
     <content type="text"><![CDATA[KDD2020. GPT-GNN GPT-GNN Presenters: 焦乙竹]]></content>
@@ -221,22 +216,6 @@
     <title><![CDATA[[Paper] Survey on Graph Neural Networks]]></title>
     <url>%2Farticle%2FSurvey-on-Graph-Neural-Networks%2F</url>
     <content type="text"><![CDATA[Survey on Graph Neural Networks Presenters: 谢毅]]></content>
-      <tags>
-        <tag>Survey</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[[Paper] 1234556]]></title>
-    <url>%2Farticle%2Ftest-1%2F</url>
-    <content type="text"><![CDATA[Survey on Graph Neural Networks Presenters: 12345667]]></content>
-      <tags>
-        <tag>Survey</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[[Paper] 1234556]]></title>
-    <url>%2Farticle%2Ftest%2F</url>
-    <content type="text"><![CDATA[Survey on Graph Neural Networks Presenters: 12345667]]></content>
       <tags>
         <tag>Survey</tag>
       </tags>
