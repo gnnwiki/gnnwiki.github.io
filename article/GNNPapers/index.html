@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [Papers] GNNPapers - GNN | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.gnn.wiki/article/GNNPapers/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+                            
+                        </div>
+                        <h1>[Papers] GNNPapers</h1>
+                        <h2 class="subheading">Some important papers on GNN</h2>
+                        <span class="meta">
+                            Posted by Reading Group on
+                            2019-09-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Graph Neural Network</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>来源于： <a href="https://github.com/thunlp/GNNPapers.git" target="_blank" rel="noopener">https://github.com/thunlp/GNNPapers.git</a></p>
+</blockquote>
+<h1><span id="must-read-papers-on-gnn">Must-read papers on GNN</span></h1>
+<p>GNN: graph neural network</p>
+<p>Contributed by Jie Zhou, Ganqu Cui, Zhengyan Zhang and Yushi Bai.</p>
+<h2><span id="content"></span></h2>
+<table>
+<tr><td colspan="2"><a href="#survey-papers">1. Survey</a></td></tr> 
+<tr><td colspan="2"><a href="#models">2. Models</a></td></tr>
+<tr>
+    <td>&emsp;<a href="#basic-models">2.1 Basic Models</a></td>
+    <td>&ensp;<a href="#graph-types">2.2 Graph Types</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#pooling-methods">2.3 Pooling Methods</a></td>
+    <td>&ensp;<a href="#analysis">2.4 Analysis</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#efficiency">2.5 Efficiency</a></td>
+    <td></td>
+</tr>
+<tr><td colspan="2"><a href="#applications">3. Applications</a></td></tr> 
+<tr>
+    <td>&emsp;<a href="#physics">3.1 Physics</a></td>
+    <td>&ensp;<a href="#chemistry-and-biology">3.2 Chemistry and Biology</a></td>
+</tr> 
+<tr>
+    <td>&emsp;<a href="#knowledge-graph">3.3 Knowledge Graph</a></td>
+    <td>&ensp;<a href="#recommender-systems">3.4 Recommender Systems</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#computer-vision">3.5 Computer Vision</a></td>
+    <td>&ensp;<a href="#natural-language-processing">3.6 Natural Language Processing</a></td>
+</tr> 
+<tr>
+    <td>&emsp;<a href="#generation">3.7 Generation</a></td>
+    <td>&ensp;<a href="#combinatorial-optimization">3.8 Combinatorial Optimization</a></td>
+</tr> 
+<tr>
+    <td>&emsp;<a href="#adversarial-attack">3.9 Adversarial Attack</a></td>
+    <td>&ensp;<a href="#graph-clustering">3.10 Graph Clustering</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#graph-classification">3.11 Graph Classification</a></td>
+    <td>&ensp;<a href="#reinforcement-learning">3.12 Reinforcement Learning</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#traffic-network">3.13 Traffic Network</a></td>
+    <td>&ensp;<a href="#few-shot-and-zero-shot-learning">3.14 Few-shot and Zero-shot Learning</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#program-representation">3.15 Program Representation</a></td>
+    <td>&ensp;<a href="#social-network">3.16 Social Network</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#community-detection">3.17 Community Detection</a></td>
+    <td></td>
+</tr>
+<tr><td colspan="2"><a href="#heterogeneous-graph">4. Heterogeneous Graph</a></td></tr>
+<tr>
+    <td>&emsp;<a href="#heterogeneous-graph-neural-network">4.1 Heterogeneous Graph Neural Network</a></td>
+    <td>&ensp;<a href="#heterogeneous-graph-embedding">4.2 Heterogeneous Graph Embedding</a></td>
+</tr>
+<tr>
+    <td>&emsp;<a href="#heterogeneous-graph-application">4.3 Heterogeneous Graph Application</a></td>
+    <td></td>
+</tr>
+</table>
+<h2><span id="survey-papers"></span></h2>
+<ol>
+<li>
+<p><strong>Graph Neural Networks: A Review of Methods and Applications.</strong> arxiv 2018. <a href="https://arxiv.org/pdf/1812.08434.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jie Zhou, Ganqu Cui, Zhengyan Zhang, Cheng Yang, Zhiyuan Liu, Maosong Sun.</em></p>
+</li>
+<li>
+<p><strong>A Comprehensive Survey on Graph Neural Networks.</strong> arxiv 2019. <a href="https://arxiv.org/pdf/1901.00596.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zonghan Wu, Shirui Pan, Fengwen Chen, Guodong Long, Chengqi Zhang, Philip S. Yu.</em></p>
+</li>
+<li>
+<p><strong>Deep Learning on Graphs: A Survey.</strong> arxiv 2018. <a href="https://arxiv.org/pdf/1812.04202.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ziwei Zhang, Peng Cui, Wenwu Zhu.</em></p>
+</li>
+<li>
+<p><strong>Relational Inductive Biases, Deep Learning, and Graph Networks.</strong> arxiv 2018. <a href="https://arxiv.org/pdf/1806.01261.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Battaglia, Peter W and Hamrick, Jessica B and Bapst, Victor and Sanchez-Gonzalez, Alvaro and Zambaldi, Vinicius and Malinowski, Mateusz and Tacchetti, Andrea and Raposo, David and Santoro, Adam and Faulkner, Ryan and others.</em></p>
+</li>
+<li>
+<p><strong>Geometric Deep Learning: Going beyond Euclidean data.</strong> IEEE SPM 2017. <a href="https://arxiv.org/pdf/1611.08097.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bronstein, Michael M and Bruna, Joan and LeCun, Yann and Szlam, Arthur and Vandergheynst, Pierre.</em></p>
+</li>
+<li>
+<p><strong>Computational Capabilities of Graph Neural Networks.</strong> IEEE TNN 2009. <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4703190" target="_blank" rel="noopener">paper</a></p>
+<p><em>Scarselli, Franco and Gori, Marco and Tsoi, Ah Chung and Hagenbuchner, Markus and Monfardini, Gabriele.</em></p>
+</li>
+<li>
+<p><strong>Neural Message Passing for Quantum Chemistry.</strong> ICML 2017. <a href="https://arxiv.org/pdf/1704.01212.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Gilmer, Justin and Schoenholz, Samuel S and Riley, Patrick F and Vinyals, Oriol and Dahl, George E.</em></p>
+</li>
+<li>
+<p><strong>Non-local Neural Networks.</strong> CVPR 2018. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Non-Local_Neural_Networks_CVPR_2018_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wang, Xiaolong and Girshick, Ross and Gupta, Abhinav and He, Kaiming.</em></p>
+</li>
+<li>
+<p><strong>The Graph Neural Network Model.</strong> IEEE TNN 2009. <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=4700287" target="_blank" rel="noopener">paper</a></p>
+<p><em>Scarselli, Franco and Gori, Marco and Tsoi, Ah Chung and Hagenbuchner, Markus and Monfardini, Gabriele.</em></p>
+</li>
+</ol>
+<h2><span id="models"></span></h2>
+<h3><span id="basic-models"></span></h3>
+<ol>
+<li>
+<p><strong>Graphical-Based Learning Environments for Pattern Recognition.</strong> SSPR/SPR 2004. <a href="https://link.springer.com/content/pdf/10.1007%2F978-3-540-27868-9_4.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Franco Scarselli, Ah Chung Tsoi, Marco Gori, Markus Hagenbuchner.</em></p>
+</li>
+<li>
+<p><strong>A new model for learning in graph domains.</strong> IJCNN 2005. <a href="https://www.researchgate.net/profile/Franco_Scarselli/publication/4202380_A_new_model_for_earning_in_raph_domains/links/0c9605188cd580504f000000.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marco Gori, Gabriele Monfardini, Franco Scarselli.</em></p>
+</li>
+<li>
+<p><strong>Graph Neural Networks for Ranking Web Pages.</strong> WI 2005. <a href="https://www.researchgate.net/profile/Franco_Scarselli/publication/221158677_Graph_Neural_Networks_for_Ranking_Web_Pages/links/0c9605188cd5090ede000000/Graph-Neural-Networks-for-Ranking-Web-Pages.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Franco Scarselli, Sweah Liang Yong, Marco Gori, Markus Hagenbuchner, Ah Chung Tsoi, Marco Maggini.</em></p>
+</li>
+<li>
+<p><strong>Spectral Networks and Locally Connected Networks on Graphs.</strong> ICLR 2014. <a href="https://arxiv.org/pdf/1312.6203.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Joan Bruna, Wojciech Zaremba, Arthur Szlam, Yann LeCun.</em></p>
+</li>
+<li>
+<p><strong>Deep Convolutional Networks on Graph-Structured Data.</strong> arxiv 2015. <a href="https://arxiv.org/pdf/1506.05163.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Mikael Henaff, Joan Bruna, Yann LeCun.</em></p>
+</li>
+<li>
+<p><strong>Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering.</strong> NIPS 2016. <a href="http://papers.nips.cc/paper/6081-convolutional-neural-networks-on-graphs-with-fast-localized-spectral-filtering.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Michaël Defferrard, Xavier Bresson, Pierre Vandergheynst.</em></p>
+</li>
+<li>
+<p><strong>Diffusion-Convolutional Neural Networks.</strong> NIPS 2016. <a href="https://arxiv.org/pdf/1511.02136.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>James Atwood, Don Towsley.</em></p>
+</li>
+<li>
+<p><strong>Gated Graph Sequence Neural Networks.</strong> ICLR 2016. <a href="https://arxiv.org/pdf/1511.05493.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yujia Li, Daniel Tarlow, Marc Brockschmidt, Richard Zemel.</em></p>
+</li>
+<li>
+<p><strong>Learning Convolutional Neural Networks for Graphs.</strong> ICML 2016. <a href="http://proceedings.mlr.press/v48/niepert16.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Mathias Niepert, Mohamed Ahmed, Konstantin Kutzkov.</em></p>
+</li>
+<li>
+<p><strong>Semantic Object Parsing with Graph LSTM.</strong> ECCV 2016. <a href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-46448-0_8.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaodan Liang, Xiaohui Shen, Jiashi Feng, Liang Lin, Shuicheng Yan.</em></p>
+</li>
+<li>
+<p><strong>Semi-Supervised Classification with Graph Convolutional Networks.</strong> ICLR 2017. <a href="https://arxiv.org/pdf/1609.02907.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Thomas N. Kipf, Max Welling.</em></p>
+</li>
+<li>
+<p><strong>Inductive Representation Learning on Large Graphs.</strong> NIPS 2017. <a href="https://arxiv.org/pdf/1706.02216.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>William L. Hamilton, Rex Ying, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>Geometric deep learning on graphs and manifolds using mixture model cnns.</strong> CVPR 2017. <a href="https://arxiv.org/pdf/1611.08402.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Federico Monti, Davide Boscaini, Jonathan Masci, Emanuele Rodolà, Jan Svoboda, Michael M. Bronstein.</em></p>
+</li>
+<li>
+<p><strong>Graph Attention Networks.</strong> ICLR 2018. <a href="https://mila.quebec/wp-content/uploads/2018/07/d1ac95b60310f43bb5a0b8024522fbe08fb2a482.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Petar Velickovic, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Lio, Yoshua Bengio.</em></p>
+</li>
+<li>
+<p><strong>Covariant Compositional Networks For Learning Graphs.</strong> ICLR 2018. <a href="https://arxiv.org/pdf/1801.02144.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Risi Kondor, Hy Truong Son, Horace Pan, Brandon Anderson, Shubhendu Trivedi.</em></p>
+</li>
+<li>
+<p><strong>Graph Partition Neural Networks for Semi-Supervised Classification.</strong> ICLR 2018. <a href="https://arxiv.org/pdf/1803.06272.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Renjie Liao, Marc Brockschmidt, Daniel Tarlow, Alexander L. Gaunt, Raquel Urtasun, Richard Zemel.</em></p>
+</li>
+<li>
+<p><strong>Inference in Probabilistic Graphical Models by Graph Neural Networks.</strong> ICLR Workshop 2018. <a href="https://arxiv.org/pdf/1803.07710.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>KiJung Yoon, Renjie Liao, Yuwen Xiong, Lisa Zhang, Ethan Fetaya, Raquel Urtasun, Richard Zemel, Xaq Pitkow.</em></p>
+</li>
+<li>
+<p><strong>Structure-Aware Convolutional Neural Networks.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7287-structure-aware-convolutional-neural-networks.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jianlong Chang, Jie Gu, Lingfeng Wang, Gaofeng Meng, Shiming Xiang, Chunhong Pan.</em></p>
+</li>
+<li>
+<p><strong>Bayesian Semi-supervised Learning with Graph Gaussian Processes.</strong> NeurIPS 2018. <a href="https://arxiv.org/pdf/1809.04379" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yin Cheng Ng, Nicolò Colombo, Ricardo Silva.</em></p>
+</li>
+<li>
+<p><strong>Adaptive Graph Convolutional Neural Networks.</strong> AAAI 2018. <a href="https://arxiv.org/pdf/1801.03226.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ruoyu Li, Sheng Wang, Feiyun Zhu, Junzhou Huang.</em></p>
+</li>
+</ol>
+<details><summary> more </summary> 
+<ol start="21">
+<li>
+<p><strong>Dual Graph Convolutional Networks for Graph-Based Semi-Supervised Classification.</strong> WWW 2018. <a href="http://delivery.acm.org/10.1145/3190000/3186116/p499-zhuang.pdf?ip=123.134.247.159&amp;id=3186116&amp;acc=OPEN&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&amp;__acm__=1564108433_6b20d1fe2ab710632bc8434ad3a00bc8" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chenyi Zhuang, Qiang Ma.</em></p>
+</li>
+<li>
+<p><strong>Learning Steady-States of Iterative Algorithms over Graphs.</strong> ICML 2018. <a href="http://proceedings.mlr.press/v80/dai18a/dai18a.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hanjun Dai, Zornitsa Kozareva, Bo Dai, Alex Smola, Le Song.</em></p>
+</li>
+<li>
+<p><strong>Graph Capsule Convolutional Neural Networks.</strong> ICML 2018 Workshop. <a href="https://arxiv.org/pdf/1805.08090.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Saurabh Verma, Zhi-Li Zhang.</em></p>
+</li>
+<li>
+<p><strong>Capsule Graph Neural Network.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=Byl8BnRcYm" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhang Xinyi, Lihui Chen.</em></p>
+</li>
+<li>
+<p><strong>Graph Wavelet Neural Network.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=H1ewdiR5tQ" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bingbing Xu, Huawei Shen, Qi Cao, Yunqi Qiu, Xueqi Cheng.</em></p>
+</li>
+<li>
+<p><strong>Deep Graph Infomax.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=rklz9iAcKQ" target="_blank" rel="noopener">paper</a></p>
+<p><em>Petar Veličković, William Fedus, William L. Hamilton, Pietro Liò, Yoshua Bengio, R Devon Hjelm.</em></p>
+</li>
+<li>
+<p><strong>Predict then Propagate: Graph Neural Networks meet Personalized PageRank.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=H1gL-2A9Ym" target="_blank" rel="noopener">paper</a></p>
+<p><em>Johannes Klicpera, Aleksandar Bojchevski, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>LanczosNet: Multi-Scale Deep Graph Convolutional Networks.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=BkedznAqKQ" target="_blank" rel="noopener">paper</a></p>
+<p><em>Renjie Liao, Zhizhen Zhao, Raquel Urtasun, Richard Zemel.</em></p>
+</li>
+<li>
+<p><strong>Invariant and Equivariant Graph Networks.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=Syx72jC9tm" target="_blank" rel="noopener">paper</a></p>
+<p><em>Haggai Maron, Heli Ben-Hamu, Nadav Shamir, Yaron Lipman.</em></p>
+</li>
+<li>
+<p><strong>GMNN: Graph Markov Neural Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1905.06214" target="_blank" rel="noopener">paper</a></p>
+<p><em>Meng Qu, Yoshua Bengio, Jian Tang.</em></p>
+</li>
+<li>
+<p><strong>Position-aware Graph Neural Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1906.04817" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiaxuan You, Rex Ying, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>Disentangled Graph Convolutional Networks.</strong> ICML 2019. <a href="http://proceedings.mlr.press/v97/ma19a/ma19a.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jianxin Ma, Peng Cui, Kun Kuang, Xin Wang, Wenwu Zhu.</em></p>
+</li>
+<li>
+<p><strong>Stochastic Blockmodels meet Graph Neural Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1905.05738" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nikhil Mehta, Lawrence Carin, Piyush Rai.</em></p>
+</li>
+<li>
+<p><strong>Learning Discrete Structures for Graph Neural Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1903.11960" target="_blank" rel="noopener">paper</a></p>
+<p><em>Luca Franceschi, Mathias Niepert, Massimiliano Pontil, Xiao He.</em></p>
+</li>
+<li>
+<p><strong>MixHop: Higher-Order Graph Convolutional Architectures via Sparsified Neighborhood Mixing.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1905.00067" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sami Abu-El-Haija, Bryan Perozzi, Amol Kapoor, Nazanin Alipourfard, Kristina Lerman, Hrayr Harutyunyan, Greg Ver Steeg, Aram Galstyan.</em></p>
+</li>
+<li>
+<p><strong>DEMO-Net: Degree-specific Graph Neural Networks for Node and Graph Classification.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1906.02319.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jun Wu, Jingrui He, Jiejun Xu.</em></p>
+</li>
+<li>
+<p><strong>Graph Representation Learning via Hard and Channel-Wise Attention Networks.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1907.04652" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongyang Gao, Shuiwang Ji.</em></p>
+</li>
+<li>
+<p><strong>Graph Learning-Convolutional Networks.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1811.09971.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bo Jiang, Ziyan Zhang, Doudou Lin, Jin Tang.</em></p>
+</li>
+<li>
+<p><strong>Data Representation and Learning with Graph Diffusion-Embedding Networks.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Jiang_Data_Representation_and_Learning_With_Graph_Diffusion-Embedding_Networks_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bo Jiang, Doudou Lin, Jin Tang, Bin Luo.</em></p>
+</li>
+<li>
+<p><strong>Label Efficient Semi-Supervised Learning via Graph Filtering.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1901.09993.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Qimai Li, Xiao-Ming Wu, Han Liu, Xiaotong Zhang, Zhichao Guan.</em></p>
+</li>
+<li>
+<p><strong>SPAGAN: Shortest Path Graph Attention Network.</strong> IJCAI 2019. <a href="https://cse.buffalo.edu/~jsyuan/papers/2019/SPAGAN_Shortest_Path_Graph_Attention_Network.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yiding Yang, Xinchao Wang, Mingli Song, Junsong Yuan, Dacheng Tao.</em></p>
+</li>
+<li>
+<p><strong>Topology Optimization based Graph Convolutional Network.</strong> IJCAI 2019. <a href="https://yangliang.github.io/pdf/ijcai19_to.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Liang Yang, Zesheng Kang, Xiaochun Cao, Di Jin, Bo Yang, Yuanfang Guo.</em></p>
+</li>
+<li>
+<p><strong>Hierarchical Graph Convolutional Networks for Semi-supervised Node Classification.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1902.06667.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Fenyu Hu, Yanqiao Zhu, Shu Wu, Liang Wang, Tieniu Tan.</em></p>
+</li>
+<li>
+<p><strong>Masked Graph Convolutional Network.</strong> IJCAI 2019. <a href="https://yangliang.github.io/pdf/ijcai19_mask.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Liang Yang, Fan Wu, Yingkui Wang, Junhua Gu, Yuanfang Guo.</em></p>
+</li>
+<li>
+<p><strong>Dual Self-Paced Graph Convolutional Network: Towards Reducing Attribute Distortions Induced by Topology.</strong> IJCAI 2019. <a href="https://yangliang.github.io/pdf/ijcai19_paced.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Liang Yang, Zhiyang Chen, Junhua Gu, Yuanfang Guo.</em></p>
+</li>
+<li>
+<p><strong>Bayesian graph convolutional neural networks for semi-supervised classification.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1811.11103.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yingxue Zhang, Soumyasundar Pal, Mark Coates, Deniz Üstebay.</em></p>
+</li>
+<li>
+<p><strong>GeniePath: Graph Neural Networks with Adaptive Receptive Paths.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1802.00910.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ziqi Liu, Chaochao Chen, Longfei Li, Jun Zhou, Xiaolong Li, Le Song, Yuan Qi.</em></p>
+</li>
+<li>
+<p><strong>Gaussian-Induced Convolution for Graphs.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1811.04393.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiatao Jiang, Zhen Cui, Chunyan Xu, Jian Yang.</em></p>
+</li>
+<li>
+<p><strong>Fisher-Bures Adversary Graph Convolutional Networks.</strong> UAI 2019. <a href="https://arxiv.org/pdf/1903.04154.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ke Sun, Piotr Koniusz, Zhen Wang.</em></p>
+</li>
+<li>
+<p><strong>N-GCN: Multi-scale Graph Convolution for Semi-supervised Node Classification.</strong> UAI 2019. <a href="https://arxiv.org/pdf/1802.08888.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sami Abu-El-Haija, Amol Kapoor, Bryan Perozzi, Joonseok Lee.</em></p>
+</li>
+<li>
+<p><strong>Confidence-based Graph Convolutional Networks for Semi-Supervised Learning.</strong> AISTATS 2019. <a href="https://arxiv.org/pdf/1901.08255.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Shikhar Vashishth, Prateek Yadav, Manik Bhandari, Partha Talukdar.</em></p>
+</li>
+<li>
+<p><strong>Lovasz Convolutional Networks.</strong> AISTATS 2019. <a href="https://arxiv.org/pdf/1805.11365.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Prateek Yadav, Madhav Nimishakavi, Naganand Yadati, Shikhar Vashishth, Arun Rajkumar, Partha Talukdar.</em></p>
+</li>
+</ol>
+</details>
+<h3><span id="graph-types"></span></h3>
+<ol>
+<li>
+<p><strong>DyRep: Learning Representations over Dynamic Graphs.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=HyePrhR5KX" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rakshit Trivedi, Mehrdad Farajtabar, Prasenjeet Biswal, Hongyuan Zha.</em></p>
+</li>
+<li>
+<p><strong>Hypergraph Neural Networks.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1809.09401.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yifan Feng, Haoxuan You, Zizhao Zhang, Rongrong Ji, Yue Gao.</em></p>
+</li>
+<li>
+<p><strong>Heterogeneous Graph Attention Network.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1903.07293.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiao Wang, Houye Ji, Chuan Shi, Bai Wang, Peng Cui, P. Yu, Yanfang Ye.</em></p>
+</li>
+<li>
+<p><strong>Representation Learning for Attributed Multiplex Heterogeneous Network.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.01669.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yukuo Cen, Xu Zou, Jianwei Zhang, Hongxia Yang, Jingren Zhou, Jie Tang.</em></p>
+</li>
+<li>
+<p><strong>ActiveHNE: Active Heterogeneous Network Embedding.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1905.05659.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xia Chen, Guoxian Yu, Jun Wang, Carlotta Domeniconi, Zhao Li, Xiangliang Zhang.</em></p>
+</li>
+<li>
+<p><strong>GCN-LASE: Towards Adequately Incorporating Link Attributes in Graph Convolutional Networks.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1902.09817.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ziyao Li, Liang Zhang, Guojie Song.</em></p>
+</li>
+<li>
+<p><strong>Dynamic Hypergraph Neural Networks.</strong> IJCAI 2019. <a href="https://www.ijcai.org/proceedings/2019/0366.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jianwen Jiang, Yuxuan Wei, Yifan Feng, Jingxuan Cao, Yue Gao.</em></p>
+</li>
+<li>
+<p><strong>Exploiting Interaction Links for Node Classification with Deep Graph Neural Networks.</strong> IJCAI 2019. <a href="https://www.ijcai.org/proceedings/2019/0447.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hogun Park, Jennifer Neville.</em></p>
+</li>
+<li>
+<p><strong>Exploiting Edge Features in Graph Neural Networks.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1809.02709.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Liyu Gong, Qiang Cheng.</em></p>
+</li>
+</ol>
+<h3><span id="pooling-methods"></span></h3>
+<ol>
+<li>
+<p><strong>Hierarchical Graph Representation Learning with Differentiable Pooling.</strong> NeurIPS 2018. <a href="https://papers.nips.cc/paper/7729-hierarchical-graph-representation-learning-with-differentiable-pooling.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhitao Ying, Jiaxuan You, Christopher Morris, Xiang Ren, Will Hamilton, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>Self-Attention Graph Pooling.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1904.08082" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junhyun Lee, Inyeop Lee, Jaewoo Kang.</em></p>
+</li>
+<li>
+<p><strong>Graph U-Nets.</strong> ICML 2019. <a href="http://proceedings.mlr.press/v97/gao19a/gao19a.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongyang Gao, Shuiwang Ji.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Networks with EigenPooling.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1904.13107.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yao Ma, Suhang Wang, Charu C. Aggarwal, Jiliang Tang.</em></p>
+</li>
+<li>
+<p><strong>Relational Pooling for Graph Representations.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1903.02541" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ryan L. Murphy, Balasubramaniam Srinivasan, Vinayak Rao, Bruno Ribeiro.</em></p>
+</li>
+</ol>
+<h3><span id="analysis"></span></h3>
+<ol>
+<li>
+<p><strong>A Comparison between Recursive Neural Networks and Graph Neural Networks.</strong> IJCNN 2006. <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=1716174" target="_blank" rel="noopener">paper</a></p>
+<p><em>Vincenzo Di Massa, Gabriele Monfardini, Lorenzo Sarti, Franco Scarselli, Marco Maggini, Marco Gori.</em></p>
+</li>
+<li>
+<p><strong>Neural networks for relational learning: an experimental comparison.</strong> Machine Learning 2011. <a href="https://link.springer.com/content/pdf/10.1007%2Fs10994-010-5196-5.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Werner Uwents, Gabriele Monfardini, Hendrik Blockeel, Marco Gori, Franco Scarselli.</em></p>
+</li>
+<li>
+<p><strong>Mean-field theory of graph neural networks in graph partitioning.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7689-mean-field-theory-of-graph-neural-networks-in-graph-partitioning.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tatsuro Kawamoto, Masashi Tsubaki, Tomoyuki Obuchi.</em></p>
+</li>
+<li>
+<p><strong>Representation Learning on Graphs with Jumping Knowledge Networks.</strong> ICML 2018. <a href="https://arxiv.org/pdf/1806.03536.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Keyulu Xu, Chengtao Li, Yonglong Tian, Tomohiro Sonobe, Ken-ichi Kawarabayashi, Stefanie Jegelka.</em></p>
+</li>
+<li>
+<p><strong>Deeper Insights into Graph Convolutional Networks for Semi-Supervised Learning.</strong> AAAI 2018. <a href="https://arxiv.org/pdf/1801.07606.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Qimai Li, Zhichao Han, Xiao-Ming Wu.</em></p>
+</li>
+<li>
+<p><strong>How Powerful are Graph Neural Networks?</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=ryGs6iA5Km" target="_blank" rel="noopener">paper</a></p>
+<p><em>Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka.</em></p>
+</li>
+<li>
+<p><strong>Stability and Generalization of Graph Convolutional Neural Networks.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.01004.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Saurabh Verma, Zhi-Li Zhang.</em></p>
+</li>
+<li>
+<p><strong>Simplifying Graph Convolutional Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1902.07153" target="_blank" rel="noopener">paper</a></p>
+<p><em>Felix Wu, Tianyi Zhang, Amauri Holanda de Souza Jr., Christopher Fifty, Tao Yu, Kilian Q. Weinberger.</em></p>
+</li>
+<li>
+<p><strong>Explainability Methods for Graph Convolutional Neural Networks.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Pope_Explainability_Methods_for_Graph_Convolutional_Neural_Networks_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Phillip E. Pope, Soheil Kolouri, Mohammad Rostami, Charles E. Martin, Heiko Hoffmann.</em></p>
+</li>
+<li>
+<p><strong>Can GCNs Go as Deep as CNNs?</strong> ICCV 2019. <a href="https://arxiv.org/pdf/1904.03751.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Guohao Li, Matthias Müller, Ali Thabet, Bernard Ghanem.</em></p>
+</li>
+<li>
+<p><strong>Weisfeiler and Leman Go Neural: Higher-order Graph Neural Networks.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1810.02244.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Christopher Morris, Martin Ritzert, Matthias Fey, William L. Hamilton, Jan Eric Lenssen, Gaurav Rattan, Martin Grohe.</em></p>
+</li>
+</ol>
+<h3><span id="efficiency"></span></h3>
+<ol>
+<li>
+<p><strong>Stochastic Training of Graph Convolutional Networks with Variance Reduction.</strong> ICML 2018. <a href="http://www.scipaper.net/uploadfile/2018/0716/20180716100330880.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jianfei Chen, Jun Zhu, Le Song.</em></p>
+</li>
+<li>
+<p><strong>FastGCN: Fast Learning with Graph Convolutional Networks via Importance Sampling.</strong> ICLR 2018. <a href="https://arxiv.org/pdf/1801.10247.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jie Chen, Tengfei Ma, Cao Xiao.</em></p>
+</li>
+<li>
+<p><strong>Adaptive Sampling Towards Fast Graph Representation Learning.</strong> NeurIPS 2018. <a href="https://arxiv.org/pdf/1809.05343.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wenbing Huang, Tong Zhang, Yu Rong, Junzhou Huang.</em></p>
+</li>
+<li>
+<p><strong>Large-Scale Learnable Graph Convolutional Networks.</strong> KDD 2018. <a href="https://arxiv.org/pdf/1808.03965.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongyang Gao, Zhengyang Wang, Shuiwang Ji.</em></p>
+</li>
+<li>
+<p><strong>Cluster-GCN: An Efficient Algorithm for Training Deep and Large Graph Convolutional Networks.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.07953.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wei-Lin Chiang, Xuanqing Liu, Si Si, Yang Li, Samy Bengio, Cho-Jui Hsieh.</em></p>
+</li>
+<li>
+<p><strong>A Degeneracy Framework for Scalable Graph Autoencoders.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1902.08813.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Guillaume Salha, Romain Hennequin, Viet Anh Tran, Michalis Vazirgiannis.</em></p>
+</li>
+</ol>
+<h2><span id="applications"></span></h2>
+<h3><span id="physics"></span></h3>
+<ol>
+<li>
+<p><strong>Discovering objects and their relations from entangled scene representations.</strong> ICLR Workshop 2017. <a href="https://arxiv.org/pdf/1702.05068.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>David Raposo, Adam Santoro, David Barrett, Razvan Pascanu, Timothy Lillicrap, Peter Battaglia.</em></p>
+</li>
+<li>
+<p><strong>A simple neural network module for relational reasoning.</strong> NIPS 2017. <a href="https://arxiv.org/pdf/1706.01427.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Adam Santoro, David Raposo, David G.T. Barrett, Mateusz Malinowski, Razvan Pascanu, Peter Battaglia, Timothy Lillicrap.</em></p>
+</li>
+<li>
+<p><strong>Interaction Networks for Learning about Objects, Relations and Physics.</strong> NIPS 2016. <a href="https://arxiv.org/pdf/1612.00222.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Peter Battaglia, Razvan Pascanu, Matthew Lai, Danilo Rezende, Koray Kavukcuoglu.</em></p>
+</li>
+<li>
+<p><strong>Visual Interaction Networks: Learning a Physics Simulator from Video.</strong> NIPS 2017. <a href="http://papers.nips.cc/paper/7040-visual-interaction-networks-learning-a-physics-simulator-from-video.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nicholas Watters, Andrea Tacchetti, Théophane Weber, Razvan Pascanu, Peter Battaglia, Daniel Zoran.</em></p>
+</li>
+<li>
+<p><strong>Graph networks as learnable physics engines for inference and control.</strong> ICML 2018. <a href="https://arxiv.org/pdf/1806.01242.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Alvaro Sanchez-Gonzalez, Nicolas Heess, Jost Tobias Springenberg, Josh Merel, Martin Riedmiller, Raia Hadsell, Peter Battaglia.</em></p>
+</li>
+<li>
+<p><strong>Learning Multiagent Communication with Backpropagation.</strong> NIPS 2016. <a href="https://arxiv.org/pdf/1605.07736.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sainbayar Sukhbaatar, Arthur Szlam, Rob Fergus.</em></p>
+</li>
+<li>
+<p><strong>VAIN: Attentional Multi-agent Predictive Modeling.</strong> NIPS 2017 <a href="https://arxiv.org/pdf/1706.06122.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yedid Hoshen.</em></p>
+</li>
+<li>
+<p><strong>Neural Relational Inference for Interacting Systems.</strong> ICML 2018. <a href="https://arxiv.org/pdf/1802.04687.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Thomas Kipf, Ethan Fetaya, Kuan-Chieh Wang, Max Welling, Richard Zemel.</em></p>
+</li>
+<li>
+<p><strong>Graph Element Networks: adaptive, structured computation and memory.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1904.09019" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ferran Alet, Adarsh K. Jeewajee, Maria Bauza, Alberto Rodriguez, Tomas Lozano-Perez, Leslie Pack Kaelbling.</em></p>
+</li>
+</ol>
+<h3><span id="chemistry-and-biology"></span></h3>
+<ol>
+<li>
+<p><strong>Convolutional networks on graphs for learning molecular fingerprints.</strong> NIPS 2015. <a href="https://arxiv.org/pdf/1509.09292.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bombarelli, Timothy Hirzel, Alán Aspuru-Guzik, Ryan P. Adams.</em></p>
+</li>
+<li>
+<p><strong>Molecular Graph Convolutions: Moving Beyond Fingerprints.</strong> Journal of computer-aided molecular design 2016. <a href="https://arxiv.org/pdf/1603.00856.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Steven Kearnes, Kevin McCloskey, Marc Berndl, Vijay Pande, Patrick Riley.</em></p>
+</li>
+<li>
+<p><strong>Protein Interface Prediction using Graph Convolutional Networks.</strong> NIPS 2017. <a href="http://papers.nips.cc/paper/7231-protein-interface-prediction-using-graph-convolutional-networks.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Alex Fout, Jonathon Byrd, Basir Shariat, Asa Ben-Hur.</em></p>
+</li>
+<li>
+<p><strong>Hybrid Approach of Relation Network and Localized Graph Convolutional Filtering for Breast Cancer Subtype Classification.</strong> IJCAI 2018. <a href="https://arxiv.org/abs/1711.05859" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sungmin Rhee, Seokjun Seo, Sun Kim.</em></p>
+</li>
+<li>
+<p><strong>Modeling polypharmacy side effects with graph convolutional networks.</strong> ISMB 2018. <a href="https://arxiv.org/abs/1802.00543" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marinka Zitnik, Monica Agrawal, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>MR-GNN: Multi-Resolution and Dual Graph Neural Network for Predicting Structured Entity Interactions.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1905.09558.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nuo Xu, Pinghui Wang, Long Chen, Jing Tao, Junzhou Zhao.</em></p>
+</li>
+<li>
+<p><strong>Pre-training of Graph Augmented Transformers for Medication Recommendation.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.00346.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junyuan Shang, Tengfei Ma, Cao Xiao, Jimeng Sun.</em></p>
+</li>
+<li>
+<p><strong>GAMENet: Graph Augmented MEmory Networks for Recommending Medication Combination.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1809.01852.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junyuan Shang, Cao Xiao, Tengfei Ma, Hongyan Li, Jimeng Sun.</em></p>
+</li>
+<li>
+<p><strong>AffinityNet: semi-supervised few-shot learning for disease type prediction.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1805.08905.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tianle Ma, Aidong Zhang.</em></p>
+</li>
+<li>
+<p><strong>Graph Transformation Policy Network for Chemical Reaction Prediction.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1812.09441" target="_blank" rel="noopener">paper</a></p>
+<p><em>Kien Do, Truyen Tran, Svetha Venkatesh.</em></p>
+</li>
+<li>
+<p><strong>Functional Transparency for Structured Data: a Game-Theoretic Approach.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1902.09737" target="_blank" rel="noopener">paper</a></p>
+<p><em>Guang-He Lee, Wengong Jin, David Alvarez-Melis, Tommi S. Jaakkola.</em></p>
+</li>
+<li>
+<p><strong>Learning Multimodal Graph-to-Graph Translation for Molecular Optimization.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=B1xJAsA5F7" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wengong Jin, Kevin Yang, Regina Barzilay, Tommi Jaakkola.</em></p>
+</li>
+<li>
+<p><strong>A Generative Model For Electron Paths.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=r1x4BnCqKX" target="_blank" rel="noopener">paper</a></p>
+<p><em>John Bradshaw, Matt J. Kusner, Brooks Paige, Marwin H. S. Segler, José Miguel Hernández-Lobato.</em></p>
+</li>
+</ol>
+<h3><span id="knowledge-graph"></span></h3>
+<ol>
+<li>
+<p><strong>Modeling Relational Data with Graph Convolutional Networks.</strong> ESWC 2018. <a href="https://arxiv.org/pdf/1703.06103.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Michael Schlichtkrull, Thomas N. Kipf, Peter Bloem, Rianne van den Berg, Ivan Titov, Max Welling.</em></p>
+</li>
+<li>
+<p><strong>Cross-lingual Knowledge Graph Alignment via Graph Convolutional Networks.</strong> EMNLP 2018. <a href="http://www.aclweb.org/anthology/D18-1032" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhichun Wang, Qingsong Lv, Xiaohan Lan, Yu Zhang.</em></p>
+</li>
+<li>
+<p><strong>Representation learning for visual-relational knowledge graphs.</strong> arxiv 2017. <a href="https://arxiv.org/pdf/1709.02314.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel Oñoro-Rubio, Mathias Niepert, Alberto García-Durán, Roberto González, Roberto J. López-Sastre.</em></p>
+</li>
+<li>
+<p><strong>End-to-end Structure-Aware Convolutional Networks for Knowledge Base Completion.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1811.04441.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chao Shang, Yun Tang, Jing Huang, Jinbo Bi, Xiaodong He, Bowen Zhou.</em></p>
+</li>
+<li>
+<p><strong>Knowledge Transfer for Out-of-Knowledge-Base Entities : A Graph Neural Network Approach.</strong> IJCAI 2017. <a href="https://arxiv.org/pdf/1706.05674.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Takuo Hamaguchi, Hidekazu Oiwa, Masashi Shimbo, Yuji Matsumoto.</em></p>
+</li>
+<li>
+<p><strong>Logic Attention Based Neighborhood Aggregation for Inductive Knowledge Graph Embedding.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1811.01399.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Peifeng Wang, Jialong Han, Chenliang Li, Rong Pan.</em></p>
+</li>
+<li>
+<p><strong>Dynamic Graph Generation Network: Generating Relational Knowledge from Diagrams.</strong> CVPR 2018. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Kim_Dynamic_Graph_Generation_CVPR_2018_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Haoyu Wang, Defu Lian, Yong Ge.</em></p>
+</li>
+<li>
+<p><strong>Estimating Node Importance in Knowledge Graphs Using Graph Neural Networks.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.08865" target="_blank" rel="noopener">paper</a></p>
+<p><em>Namyong Park, Andrey Kan, Xin Luna Dong, Tong Zhao, Christos Faloutsos.</em></p>
+</li>
+<li>
+<p><strong>OAG: Toward Linking Large-scale Heterogeneous Entity Graphs.</strong> KDD 2019. <a href="http://keg.cs.tsinghua.edu.cn/jietang/publications/KDD19-Zhang-et-al-Open_Academic_Graph.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Fanjin Zhang, Xiao Liu, Jie Tang, Yuxiao Dong, Peiran Yao, Jie Zhang, Xiaotao Gu, Yan Wang, Bin Shao, Rui Li, Kuansan Wang.</em></p>
+</li>
+<li>
+<p><strong>Learning Attention-based Embeddings for Relation Prediction in Knowledge Graphs.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1906.01195" target="_blank" rel="noopener">paper</a></p>
+<p><em>Deepak Nathani, Jatin Chauhan, Charu Sharma, Manohar Kaul.</em></p>
+</li>
+<li>
+<p><strong>Cross-lingual Knowledge Graph Alignment via Graph Matching Neural Network.</strong> ACL 2019. <a href="https://128.84.21.199/pdf/1905.11605" target="_blank" rel="noopener">paper</a></p>
+<p><em>Kun Xu, Mo Yu, Yansong Feng, Yan Song, Zhiguo Wang, Dong Yu.</em></p>
+</li>
+</ol>
+<h3><span id="recommender-systems"></span></h3>
+<ol>
+<li>
+<p><strong>Graph Convolutional Neural Networks for Web-Scale Recommender Systems.</strong> KDD 2018. <a href="https://arxiv.org/abs/1806.01973" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rex Ying, Ruining He, Kaifeng Chen, Pong Eksombatchai, William L. Hamilton, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>Geometric Matrix Completion with Recurrent Multi-Graph Neural Networks.</strong> NIPS 2017. <a href="https://arxiv.org/abs/1704.06803" target="_blank" rel="noopener">paper</a></p>
+<p><em>Federico Monti, Michael M. Bronstein, Xavier Bresson.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Matrix Completion.</strong> 2017. <a href="https://arxiv.org/abs/1706.02263" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rianne van den Berg, Thomas N. Kipf, Max Welling.</em></p>
+</li>
+<li>
+<p><strong>STAR-GCN: Stacked and Reconstructed Graph Convolutional Networks for Recommender Systems.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1905.13129.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiani Zhang, Xingjian Shi, Shenglin Zhao, Irwin King.</em></p>
+</li>
+<li>
+<p><strong>Binarized Collaborative Filtering with Distilling Graph Convolutional Networks.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.01829.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Haoyu Wang, Defu Lian, Yong Ge.</em></p>
+</li>
+<li>
+<p><strong>Graph Contextualized Self-Attention Network for Session-based Recommendation.</strong> IJCAI 2019. <a href="https://www.ijcai.org/proceedings/2019/0547.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chengfeng Xu, Pengpeng Zhao, Yanchi Liu, Victor S. Sheng, Jiajie Xu, Fuzhen Zhuang, Junhua Fang, Xiaofang Zhou.</em></p>
+</li>
+<li>
+<p><strong>Session-based Recommendation with Graph Neural Networks.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1811.00855.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Shu Wu, Yuyuan Tang, Yanqiao Zhu, Liang Wang, Xing Xie, Tieniu Tan.</em></p>
+</li>
+<li>
+<p><strong>Geometric Hawkes Processes with Graph Convolutional Recurrent Neural Networks.</strong> AAAI 2019. <a href="https://jshang2.github.io/pubs/geo.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jin Shang, Mingxuan Sun.</em></p>
+</li>
+<li>
+<p><strong>Knowledge-aware Graph Neural Networks with Label Smoothness Regularization for Recommender Systems.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.04413" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongwei Wang, Fuzheng Zhang, Mengdi Zhang, Jure Leskovec, Miao Zhao, Wenjie Li, Zhongyuan Wang.</em></p>
+</li>
+<li>
+<p><strong>Exact-K Recommendation via Maximal Clique Optimization.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.07089" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yu Gong, Yu Zhu, Lu Duan, Qingwen Liu, Ziyu Guan, Fei Sun, Wenwu Ou, Kenny Q. Zhu.</em></p>
+</li>
+<li>
+<p><strong>KGAT: Knowledge Graph Attention Network for Recommendation.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.07854" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiang Wang, Xiangnan He, Yixin Cao, Meng Liu, Tat-Seng Chua.</em></p>
+</li>
+<li>
+<p><strong>Knowledge Graph Convolutional Networks for Recommender Systems.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1904.12575.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongwei Wang, Miao Zhao, Xing Xie, Wenjie Li, Minyi Guo.</em></p>
+</li>
+<li>
+<p><strong>Dual Graph Attention Networks for Deep Latent Representation of Multifaceted Social Effects in Recommender Systems.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1903.10433.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Qitian Wu, Hengrui Zhang, Xiaofeng Gao, Peng He, Paul Weng, Han Gao, Guihai Chen.</em></p>
+</li>
+<li>
+<p><strong>Graph Neural Networks for Social Recommendation.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1902.07243.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wenqi Fan, Yao Ma, Qing Li, Yuan He, Eric Zhao, Jiliang Tang, Dawei Yin.</em></p>
+</li>
+</ol>
+<h3><span id="computer-vision"></span></h3>
+<ol>
+<li>
+<p><strong>Graph Neural Networks for Object Localization.</strong> ECAI 2006. <a href="http://ebooks.iospress.nl/volumearticle/2775" target="_blank" rel="noopener">paper</a></p>
+<p><em>Gabriele Monfardini, Vincenzo Di Massa, Franco Scarselli, Marco Gori.</em></p>
+</li>
+<li>
+<p><strong>Learning Human-Object Interactions by Graph Parsing Neural Networks.</strong> ECCV 2018. <a href="https://arxiv.org/pdf/1808.07962.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Siyuan Qi, Wenguan Wang, Baoxiong Jia, Jianbing Shen, Song-Chun Zhu.</em></p>
+</li>
+<li>
+<p><strong>Learning Conditioned Graph Structures for Interpretable Visual Question Answering.</strong> NeurIPS 2018. <a href="https://arxiv.org/pdf/1806.07243" target="_blank" rel="noopener">paper</a></p>
+<p><em>Will Norcliffe-Brown, Efstathios Vafeias, Sarah Parisot.</em></p>
+</li>
+<li>
+<p><strong>Symbolic Graph Reasoning Meets Convolutions.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7456-symbolic-graph-reasoning-meets-convolutions.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaodan Liang, Zhiting Hu, Hao Zhang, Liang Lin, Eric P. Xing.</em></p>
+</li>
+<li>
+<p><strong>Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7531-out-of-the-box-reasoning-with-graph-convolution-nets-for-factual-visual-question-answering.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Medhini Narasimhan, Svetlana Lazebnik, Alexander Schwing.</em></p>
+</li>
+<li>
+<p><strong>Structural-RNN: Deep Learning on Spatio-Temporal Graphs.</strong> CVPR 2016. <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Jain_Structural-RNN_Deep_Learning_CVPR_2016_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ashesh Jain, Amir R. Zamir, Silvio Savarese, Ashutosh Saxena.</em></p>
+</li>
+<li>
+<p><strong>Relation Networks for Object Detection.</strong> CVPR 2018. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers_backup/Hu_Relation_Networks_for_CVPR_2018_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Han Hu, Jiayuan Gu, Zheng Zhang, Jifeng Dai, Yichen Wei.</em></p>
+</li>
+<li>
+<p><strong>Learning Region features for Object Detection.</strong> ECCV 2018. <a href="https://arxiv.org/pdf/1803.07066" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiayuan Gu, Han Hu, Liwei Wang, Yichen Wei, Jifeng Dai.</em></p>
+</li>
+<li>
+<p><strong>The More You Know: Using Knowledge Graphs for Image Classification.</strong> CVPR 2017. <a href="https://arxiv.org/pdf/1612.04844.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Kenneth Marino, Ruslan Salakhutdinov, Abhinav Gupta.</em></p>
+</li>
+<li>
+<p><strong>Understanding Kin Relationships in a Photo.</strong> TMM 2012. <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=6151163" target="_blank" rel="noopener">paper</a></p>
+<p><em>Siyu Xia, Ming Shao, Jiebo Luo, Yun Fu.</em></p>
+</li>
+<li>
+<p><strong>Graph-Structured Representations for Visual Question Answering.</strong> CVPR 2017. <a href="https://arxiv.org/pdf/1609.05600.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Damien Teney, Lingqiao Liu, Anton van den Hengel.</em></p>
+</li>
+<li>
+<p><strong>Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition.</strong> AAAI 2018. <a href="https://arxiv.org/pdf/1801.07455.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sijie Yan, Yuanjun Xiong, Dahua Lin.</em></p>
+</li>
+<li>
+<p><strong>Dynamic Graph CNN for Learning on Point Clouds.</strong> CVPR 2018. <a href="https://arxiv.org/pdf/1801.07829.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon.</em></p>
+</li>
+<li>
+<p><strong>PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation.</strong> CVPR 2018. <a href="https://arxiv.org/pdf/1612.00593.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Charles R. Qi, Hao Su, Kaichun Mo, Leonidas J. Guibas.</em></p>
+</li>
+<li>
+<p><strong>3D Graph Neural Networks for RGBD Semantic Segmentation.</strong> CVPR 2017. <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Qi_3D_Graph_Neural_ICCV_2017_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaojuan Qi, Renjie Liao, Jiaya Jia, Sanja Fidler, Raquel Urtasun.</em></p>
+</li>
+<li>
+<p><strong>Iterative Visual Reasoning Beyond Convolutions.</strong> CVPR 2018. <a href="https://arxiv.org/pdf/1803.11189" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xinlei Chen, Li-Jia Li, Li Fei-Fei, Abhinav Gupta.</em></p>
+</li>
+<li>
+<p><strong>Dynamic Edge-Conditioned Filters in Convolutional Neural Networks on Graphs.</strong> CVPR 2017. <a href="https://arxiv.org/pdf/1704.02901" target="_blank" rel="noopener">paper</a></p>
+<p><em>Martin Simonovsky, Nikos Komodakis.</em></p>
+</li>
+<li>
+<p><strong>Situation Recognition with Graph Neural Networks.</strong> ICCV 2017. <a href="https://arxiv.org/pdf/1708.04320" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ruiyu Li, Makarand Tapaswi, Renjie Liao, Jiaya Jia, Raquel Urtasun, Sanja Fidler.</em></p>
+</li>
+<li>
+<p><strong>Deep Reasoning with Knowledge Graph for Social Relationship Understanding.</strong> IJCAI 2018. <a href="https://arxiv.org/pdf/1807.00504.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhouxia Wang, Tianshui Chen, Jimmy Ren, Weihao Yu, Hui Cheng, Liang Lin.</em></p>
+</li>
+<li>
+<p><strong>I Know the Relationships: Zero-Shot Action Recognition via Two-Stream Graph Convolutional Networks and Knowledge Graphs.</strong> AAAI 2019. <a href="http://nlpr-web.ia.ac.cn/mmc/homepage/jygao/JY_Gao_files/Conference_Papers/AAAI2019-GJY.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junyu Gao, Tianzhu Zhang, Changsheng Xu.</em></p>
+</li>
+</ol>
+<details><summary>more</summary>
+<ol start="21">
+<li>
+<p><strong>Graph CNNs with Motif and Variable Temporal Block for Skeleton-based Action Recognition.</strong> AAAI 2019. <a href="https://ecs.victoria.ac.nz/foswiki/pub/Groups/Graphics/RGB-DDataProcessingForRobotics/Graph%20CNNs%20with%20Motif%20and%20Variable%20Temporal%20Block%20for%20Skeleton-based%20Action%20Recognition.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yu-Hui Wen, Lin Gao, Hongbo Fu, Fang-Lue Zhang, Shihong Xia.</em></p>
+</li>
+<li>
+<p><strong>Multi-Label Image Recognition with Graph Convolutional Networks.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.03582.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhao-Min Chen, Xiu-Shen Wei, Peng Wang, Yanwen Guo.</em></p>
+</li>
+<li>
+<p><strong>Spatial-Aware Graph Relation Network for Large-Scale Object Detection.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Xu_Spatial-Aware_Graph_Relation_Network_for_Large-Scale_Object_Detection_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hang Xu, Chenhan Jiang, Xiaodan Liang, Zhenguo Li.</em></p>
+</li>
+<li>
+<p><strong>GCAN: Graph Convolutional Adversarial Network for Unsupervised Domain Adaptation.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Ma_GCAN_Graph_Convolutional_Adversarial_Network_for_Unsupervised_Domain_Adaptation_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xinhong Ma, Tianzhu Zhang, Changsheng Xu.</em></p>
+</li>
+<li>
+<p><strong>Mind Your Neighbours: Image Annotation With Metadata Neighbourhood Graph Co-Attention Networks.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhang_Mind_Your_Neighbours_Image_Annotation_With_Metadata_Neighbourhood_Graph_Co-Attention_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junjie Zhang, Qi Wu, Jian Zhang, Chunhua Shen, Jianfeng Lu.</em></p>
+</li>
+<li>
+<p><strong>Attentive Relational Networks for Mapping Images to Scene Graphs.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1811.10696.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Mengshi Qi, Weijian Li, Zhengyuan Yang, Yunhong Wang, Jiebo Luo.</em></p>
+</li>
+<li>
+<p><strong>Knowledge-Embedded Routing Network for Scene Graph Generation.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1903.03326.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tianshui Chen, Weihao Yu, Riquan Chen, Liang Lin.</em></p>
+</li>
+<li>
+<p><strong>Auto-Encoding Scene Graphs for Image Captioning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1812.02378.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xu Yang, Kaihua Tang, Hanwang Zhang, Jianfei Cai.</em></p>
+</li>
+<li>
+<p><strong>Learning to Cluster Faces on an Affinity Graph.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.02749.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lei Yang, Xiaohang Zhan, Dapeng Chen, Junjie Yan, Chen Change Loy, Dahua Lin.</em></p>
+</li>
+<li>
+<p><strong>Learning a Deep ConvNet for Multi-label Classification with Partial Labels.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1902.09720.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Thibaut Durand, Nazanin Mehrasa, Greg Mori.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Label Noise Cleaner: Train a Plug-and-play Action Classifier for Anomaly Detection.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1903.07256.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jia-Xing Zhong, Nannan Li, Weijie Kong, Shan Liu, Thomas H. Li, Ge Li.</em></p>
+</li>
+<li>
+<p><strong>Learning Actor Relation Graphs for Group Activity Recognition.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.10117.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jianchao Wu, Limin Wang, Li Wang, Jie Guo, Gangshan Wu.</em></p>
+</li>
+<li>
+<p><strong>ABC: A Big CAD Model Dataset For Geometric Deep Learning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1812.06216.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sebastian Koch, Albert Matveev, Zhongshi Jiang, Francis Williams, Alexey Artemov, Evgeny Burnaev, Marc Alexa, Denis Zorin, Daniele Panozzo.</em></p>
+</li>
+<li>
+<p><strong>Neighbourhood Watch: Referring Expression Comprehension via Language-guided Graph Attention Networks.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1812.04794.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Peng Wang, Qi Wu, Jiewei Cao, Chunhua Shen, Lianli Gao, Anton van den Hengel.</em></p>
+</li>
+<li>
+<p><strong>Graph-Based Global Reasoning Networks.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1811.12814.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yunpeng Chen, Marcus Rohrbach, Zhicheng Yan, Shuicheng Yan, Jiashi Feng, Yannis Kalantidis.</em></p>
+</li>
+<li>
+<p><strong>Linkage Based Face Clustering via Graph Convolution Network.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1903.11306.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhongdao Wang, Liang Zheng, Yali Li, Shengjin Wang.</em></p>
+</li>
+<li>
+<p><strong>Fast Interactive Object Annotation with Curve-GCN.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1903.06874.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Huan Ling, Jun Gao, Amlan Kar, Wenzheng Chen, Sanja Fidler.</em></p>
+</li>
+<li>
+<p><strong>Semantic Graph Convolutional Networks for 3D Human Pose Regression.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.03345.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Long Zhao, Xi Peng, Yu Tian, Mubbasir Kapadia, Dimitris N. Metaxas.</em></p>
+</li>
+<li>
+<p><strong>Neural Task Graphs: Generalizing to Unseen Tasks from a Single Video Demonstration.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1807.03480.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>De-An Huang, Suraj Nair, Danfei Xu, Yuke Zhu, Animesh Garg, Li Fei-Fei, Silvio Savarese, Juan Carlos Niebles.</em></p>
+</li>
+<li>
+<p><strong>Graphonomy: Universal Human Parsing via Graph Transfer Learning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.04536.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ke Gong, Yiming Gao, Xiaodan Liang, Xiaohui Shen, Meng Wang, Liang Lin.</em></p>
+</li>
+<li>
+<p><strong>Learning Context Graph for Person Search.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.01830.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yichao Yan, Qiang Zhang, Bingbing Ni, Wendong Zhang, Minghao Xu, Xiaokang Yang.</em></p>
+</li>
+<li>
+<p><strong>Occlusion-Net: 2D/3D Occluded Keypoint Localization Using Graph Networks.</strong> CVPR 2019. <a href="http://www.cs.cmu.edu/~mvo/index_files/Papers/ONet_19.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>N. Dinesh Reddy, Minh Vo, Srinivasa G. Narasimhan.</em></p>
+</li>
+<li>
+<p><strong>MAN: Moment Alignment Network for Natural Language Moment Retrieval via Iterative Graph Adjustment.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1812.00087.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Da Zhang, Xiyang Dai, Xin Wang, Yuan-Fang Wang, Larry S. Davis.</em></p>
+</li>
+<li>
+<p><strong>Context-Aware Visual Compatibility Prediction.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1902.03646.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Guillem Cucurull, Perouz Taslakian, David Vazquez.</em></p>
+</li>
+<li>
+<p><strong>Graph Attention Convolution for Point Cloud Semantic Segmentation.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Graph_Attention_Convolution_for_Point_Cloud_Semantic_Segmentation_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lei Wang, Yuchun Huang, Yaolin Hou, Shenman Zhang, Jie Shan.</em></p>
+</li>
+<li>
+<p><strong>An Attention Enhanced Graph Convolutional LSTM Network for Skeleton-Based Action Recognition.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1902.09130.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chenyang Si, Wentao Chen, Wei Wang, Liang Wang, Tieniu Tan.</em></p>
+</li>
+<li>
+<p><strong>Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1904.12659.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Maosen Li, Siheng Chen, Xu Chen, Ya Zhang, Yanfeng Wang, Qi Tian.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Tracking.</strong> CVPR 2019. <a href="http://nlpr-web.ia.ac.cn/mmc/homepage/jygao/JY_Gao_files/Conference_Papers/GCT-CVPR2019-GJY.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Junyu Gao, Tianzhu Zhang, Changsheng Xu.</em></p>
+</li>
+<li>
+<p><strong>Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Shi_Two-Stream_Adaptive_Graph_Convolutional_Networks_for_Skeleton-Based_Action_Recognition_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lei Shi, Yifan Zhang, Jian Cheng, Hanqing Lu.</em></p>
+</li>
+<li>
+<p><strong>Skeleton-Based Action Recognition With Directed Graph Neural Networks.</strong> CVPR 2019. <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Shi_Skeleton-Based_Action_Recognition_With_Directed_Graph_Neural_Networks_CVPR_2019_paper.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lei Shi, Yifan Zhang, Jian Cheng, Hanqing Lu.</em></p>
+</li>
+<li>
+<p><strong>Neural Module Networks.</strong> CVPR 2016. <a href="https://arxiv.org/pdf/1511.02799.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jacob Andreas, Marcus Rohrbach, Trevor Darrell, Dan Klein.</em></p>
+</li>
+<li>
+<p><strong>LatentGNN: Learning Efficient Non-local Relations for Visual Recognition.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1905.11634" target="_blank" rel="noopener">paper</a></p>
+<p><em>Songyang Zhang, Shipeng Yan, Xuming He.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Gaussian Processes.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1905.05739" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ian Walker, Ben Glocker.</em></p>
+</li>
+<li>
+<p><strong>GEOMetrics: Exploiting Geometric Structure for Graph-Encoded Objects.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1901.11461" target="_blank" rel="noopener">paper</a></p>
+<p><em>Edward J. Smith, Scott Fujimoto, Adriana Romero, David Meger.</em></p>
+</li>
+</ol>
+</details>
+<h3><span id="natural-language-processing"></span></h3>
+<ol>
+<li>
+<p><strong>Conversation Modeling on Reddit using a Graph-Structured LSTM.</strong> TACL 2018. <a href="https://arxiv.org/pdf/1704.02080" target="_blank" rel="noopener">paper</a></p>
+<p><em>Vicky Zayats, Mari Ostendorf.</em></p>
+</li>
+<li>
+<p><strong>Learning Graphical State Transitions.</strong> ICLR 2017. <a href="https://openreview.net/forum?id=HJ0NvFzxl" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel D. Johnson.</em></p>
+</li>
+<li>
+<p><strong>Multiple Events Extraction via Attention-based Graph Information Aggregation.</strong> EMNLP 2018. <a href="https://arxiv.org/pdf/1809.09078.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiao Liu, Zhunchen Luo, Heyan Huang.</em></p>
+</li>
+<li>
+<p><strong>Recurrent Relational Networks.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7597-recurrent-relational-networks.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rasmus Palm, Ulrich Paquet, Ole Winther.</em></p>
+</li>
+<li>
+<p><strong>Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks.</strong> ACL 2015. <a href="https://www.aclweb.org/anthology/P15-1150" target="_blank" rel="noopener">paper</a></p>
+<p><em>Kai Sheng Tai, Richard Socher, Christopher D. Manning.</em></p>
+</li>
+<li>
+<p><strong>Encoding Sentences with Graph Convolutional Networks for Semantic Role Labeling.</strong> EMNLP 2017. <a href="https://arxiv.org/abs/1703.04826" target="_blank" rel="noopener">paper</a></p>
+<p><em>Diego Marcheggiani, Ivan Titov.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Networks with Argument-Aware Pooling for Event Detection.</strong> AAAI 2018. <a href="http://ix.cs.uoregon.edu/~thien/pubs/graphConv.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Thien Huu Nguyen, Ralph Grishman.</em></p>
+</li>
+<li>
+<p><strong>Exploiting Semantics in Neural Machine Translation with Graph Convolutional Networks.</strong> NAACL 2018. <a href="http://www.aclweb.org/anthology/N18-2078" target="_blank" rel="noopener">paper</a></p>
+<p><em>Diego Marcheggiani, Joost Bastings, Ivan Titov.</em></p>
+</li>
+<li>
+<p><strong>Exploring Graph-structured Passage Representation for Multi-hop Reading Comprehension with Graph Neural Networks.</strong> 2018. <a href="https://arxiv.org/abs/1809.02040" target="_blank" rel="noopener">paper</a></p>
+<p><em>Linfeng Song, Zhiguo Wang, Mo Yu, Yue Zhang, Radu Florian, Daniel Gildea.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolution over Pruned Dependency Trees Improves Relation Extraction.</strong> EMNLP 2018. <a href="https://arxiv.org/abs/1809.10185" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yuhao Zhang, Peng Qi, Christopher D. Manning.</em></p>
+</li>
+<li>
+<p><strong>N-ary relation extraction using graph state LSTM.</strong> EMNLP 18. <a href="https://arxiv.org/abs/1808.09101" target="_blank" rel="noopener">paper</a></p>
+<p><em>Linfeng Song, Yue Zhang, Zhiguo Wang, Daniel Gildea.</em></p>
+</li>
+<li>
+<p><strong>A Graph-to-Sequence Model for AMR-to-Text Generation.</strong> ACL 2018. <a href="https://arxiv.org/abs/1805.02473" target="_blank" rel="noopener">paper</a></p>
+<p><em>Linfeng Song, Yue Zhang, Zhiguo Wang, Daniel Gildea.</em></p>
+</li>
+<li>
+<p><strong>Graph-to-Sequence Learning using Gated Graph Neural Networks.</strong> ACL 2018. <a href="https://arxiv.org/pdf/1806.09835.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel Beck, Gholamreza Haffari, Trevor Cohn.</em></p>
+</li>
+<li>
+<p><strong>Cross-Sentence N-ary Relation Extraction with Graph LSTMs.</strong> TACL. <a href="https://arxiv.org/abs/1708.03743" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nanyun Peng, Hoifung Poon, Chris Quirk, Kristina Toutanova, Wen-tau Yih.</em></p>
+</li>
+<li>
+<p><strong>Sentence-State LSTM for Text Representation.</strong> ACL 2018. <a href="https://arxiv.org/abs/1805.02474" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yue Zhang, Qi Liu, Linfeng Song.</em></p>
+</li>
+<li>
+<p><strong>End-to-End Relation Extraction using LSTMs on Sequences and Tree Structures.</strong> ACL 2016. <a href="https://arxiv.org/abs/1601.00770" target="_blank" rel="noopener">paper</a></p>
+<p><em>Makoto Miwa, Mohit Bansal.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Encoders for Syntax-aware Neural Machine Translation.</strong> EMNLP 2017. <a href="https://arxiv.org/pdf/1704.04675" target="_blank" rel="noopener">paper</a></p>
+<p><em>Joost Bastings, Ivan Titov, Wilker Aziz, Diego Marcheggiani, Khalil Sima’an.</em></p>
+</li>
+<li>
+<p><strong>Semi-supervised User Geolocation via Graph Convolutional Networks.</strong> ACL 2018. <a href="https://arxiv.org/pdf/1804.08049.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Afshin Rahimi, Trevor Cohn, Timothy Baldwin.</em></p>
+</li>
+<li>
+<p><strong>Modeling Semantics with Gated Graph Neural Networks for Knowledge Base Question Answering.</strong> COLING 2018. <a href="https://arxiv.org/pdf/1808.04126.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniil Sorokin, Iryna Gurevych.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolutional Networks for Text Classification.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1809.05679.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Liang Yao, Chengsheng Mao, Yuan Luo.</em></p>
+</li>
+</ol>
+<details><summary>more</summary>
+<ol start="21">
+<li>
+<p><strong>Constructing Narrative Event Evolutionary Graph for Script Event Prediction.</strong> IJCAI 2018. <a href="https://arxiv.org/pdf/1805.05081.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhongyang Li, Xiao Ding, Ting Liu.</em></p>
+</li>
+<li>
+<p><strong>Incorporating Syntactic and Semantic Information in Word Embeddings using Graph Convolutional Networks.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1809.04283" target="_blank" rel="noopener">paper</a></p>
+<p><em>Shikhar Vashishth, Manik Bhandari, Prateek Yadav, Piyush Rai, Chiranjib Bhattacharyya, Partha Talukdar</em></p>
+</li>
+<li>
+<p><strong>PaperRobot: Incremental Draft Generation of Scientific Ideas.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.07870" target="_blank" rel="noopener">paper</a></p>
+<p><em>Qingyun Wang, Lifu Huang, Zhiying Jiang, Kevin Knight, Heng Ji, Mohit Bansal, Yi Luan.</em></p>
+</li>
+<li>
+<p><strong>Inter-sentence Relation Extraction with Document-level Graph Convolutional Neural Network.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1906.04684" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sunil Kumar Sahu, Fenia Christopoulou, Makoto Miwa, Sophia Ananiadou.</em></p>
+</li>
+<li>
+<p><strong>Textbook Question Answering with Multi-modal Context Graph Understanding and Self-supervised Open-set Comprehension.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1811.00232" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daesik Kim, Seonhoon Kim, Nojun Kwak.</em></p>
+</li>
+<li>
+<p><strong>Multi-hop Reading Comprehension across Multiple Documents by Reasoning over Heterogeneous Graphs.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.07374" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ming Tu, Guangtao Wang, Jing Huang, Yun Tang, Xiaodong He, Bowen Zhou.</em></p>
+</li>
+<li>
+<p><strong>Dynamically Fused Graph Network for Multi-hop Reasoning.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.06933" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yunxuan Xiao, Yanru Qu, Lin Qiu, Hao Zhou, Lei Li, Weinan Zhang, Yong Yu.</em></p>
+</li>
+<li>
+<p><strong>Cognitive Graph for Multi-Hop Reading Comprehension at Scale.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.05460" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ming Ding, Chang Zhou, Qibin Chen, Hongxia Yang, Jie Tang.</em></p>
+</li>
+<li>
+<p><strong>Joint Type Inference on Entities and Relations via Graph Convolutional Networks.</strong> ACL 2019. <a href="http://www.czsun.site/publications/joint_entrel_gcn.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Changzhi Sun, Yeyun Gong, Yuanbin Wu, Ming Gong, Daxing Jiang, Man Lan, Shiliang Sun1, Nan Duan.</em></p>
+</li>
+<li>
+<p><strong>Attention Guided Graph Convolutional Networks for Relation Extraction.</strong> ACL 2019. <a href="http://www.statnlp.org/wp-content/uploads/2019/06/Attention_Guided_Graph_Convolutional_Networks_for_Relation_Extraction.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhijiang Guo, Yan Zhang, Wei Lu.</em></p>
+</li>
+<li>
+<p><strong>GraphRel: Modeling Text as Relational Graphs for Joint Entity and Relation Extraction.</strong> ACL 2019. <a href="https://tsujuifu.github.io/pubs/acl19_graph-rel.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tsu-Jui Fu, Peng-Hsuan Li, Wei-Yun Ma.</em></p>
+</li>
+<li>
+<p><strong>Graph Neural Networks with Generated Parameters for Relation Extraction.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1902.00756" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hao Zhu, Yankai Lin, Zhiyuan Liu, Jie Fu, Tat-seng Chua, Maosong Sun.</em></p>
+</li>
+<li>
+<p><strong>Generating Logical Forms from Graph Representations of Text and Entities.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.08407" target="_blank" rel="noopener">paper</a></p>
+<p><em>Peter Shaw, Philip Massey, Angelica Chen, Francesco Piccinno, Yasemin Altun.</em></p>
+</li>
+<li>
+<p><strong>Matching Article Pairs with Graphical Decomposition and Convolutions.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1802.07459" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bang Liu, Di Niu, Haojie Wei, Jinghong Lin, Yancheng He, Kunfeng Lai, Yu Xu.</em></p>
+</li>
+<li>
+<p><strong>Representing Schema Structure with Graph Neural Networks for Text-to-SQL Parsing.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.06241" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ben Bogin, Matt Gardner, Jonathan Berant.</em></p>
+</li>
+<li>
+<p><strong>Coherent Comment Generation for Chinese Articles with a Graph-to-Sequence Model.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1906.01231" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wei Li, Jingjing Xu, Yancheng He, Shengli Yan, Yunfang Wu, Xu sun.</em></p>
+</li>
+<li>
+<p><strong>GEAR: Graph-based Evidence Aggregating and Reasoning for Fact Verification.</strong> ACL 2019. <a href="https://www.aclweb.org/anthology/P19-1085" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jie Zhou, Xu Han, Cheng Yang, Zhiyuan Liu, Lifeng Wang, Changcheng Li, Maosong Sun.</em></p>
+</li>
+<li>
+<p><strong>Look Again at the Syntax: Relational Graph Convolutional Network for Gendered Ambiguous Pronoun Resolution.</strong> ACL 2019. <a href="https://arxiv.org/pdf/1905.08868.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yinchuan Xu, Junlin Yang.</em></p>
+</li>
+<li>
+<p><strong>Structured Neural Summarization.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=H1ersoRqtm" target="_blank" rel="noopener">paper</a></p>
+<p><em>Patrick Fernandes, Miltiadis Allamanis, Marc Brockschmidt.</em></p>
+</li>
+<li>
+<p><strong>Long-tail Relation Extraction via Knowledge Graph Embeddings and Graph Convolution Networks.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1903.01306.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ningyu Zhang, Shumin Deng, Zhanlin Sun, Guanying Wang, Xi Chen, Wei Zhang, Huajun Chen.</em></p>
+</li>
+<li>
+<p><strong>Text Generation from Knowledge Graphs with Graph Transformers.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1904.02342.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rik Koncel-Kedziorski, Dhanush Bekal, Yi Luan, Mirella Lapata, Hannaneh Hajishirzi.</em></p>
+</li>
+<li>
+<p><strong>Question Answering by Reasoning Across Documents with Graph Convolutional Networks.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1808.09920.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nicola De Cao, Wilker Aziz, Ivan Titov.</em></p>
+</li>
+<li>
+<p><strong>BAG: Bi-directional Attention Entity Graph Convolutional Network for Multi-hop Reasoning Question Answering.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1904.04969.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yu Cao, Meng Fang, Dacheng Tao.</em></p>
+</li>
+<li>
+<p><strong>GraphIE: A Graph-Based Framework for Information Extraction.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1810.13083.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yujie Qian, Enrico Santus, Zhijing Jin, Jiang Guo, Regina Barzilay.</em></p>
+</li>
+<li>
+<p><strong>Graph Convolution for Multimodal Information Extraction from Visually Rich Documents.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1903.11279.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaojing Liu, Feiyu Gao, Qiong Zhang, Huasha Zhao.</em></p>
+</li>
+<li>
+<p><strong>Structural Neural Encoders for AMR-to-text Generation.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1903.11410.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marco Damonte, Shay B. Cohen.</em></p>
+</li>
+<li>
+<p><strong>Abusive Language Detection with Graph Convolutional Networks.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1904.04073.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Pushkar Mishra, Marco Del Tredici, Helen Yannakoudakis, Ekaterina Shutova.</em></p>
+</li>
+<li>
+<p><strong>Learning Graph Pooling and Hybrid Convolutional Operations for Text Representations.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1901.06965.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hongyang Gao, Yongjun Chen, Shuiwang Ji.</em></p>
+</li>
+</ol>
+</details>
+<h3><span id="generation"></span></h3>
+<ol>
+<li>
+<p><strong>Graph Convolutional Policy Network for Goal-Directed Molecular Graph Generation.</strong> NeurIPS 2018. <a href="https://arxiv.org/pdf/1806.02473" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiaxuan You, Bowen Liu, Rex Ying, Vijay Pande, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders.</strong> NeurIPS 2018. <a href="https://papers.nips.cc/paper/7942-constrained-generation-of-semantically-valid-graphs-via-regularizing-variational-autoencoders.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tengfei Ma, Jie Chen, Cao Xiao.</em></p>
+</li>
+<li>
+<p><strong>Learning deep generative models of graphs.</strong> ICLR Workshop 2018. <a href="https://arxiv.org/abs/1803.03324" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yujia Li, Oriol Vinyals, Chris Dyer, Razvan Pascanu, Peter Battaglia.</em></p>
+</li>
+<li>
+<p><strong>MolGAN: An implicit generative model for small molecular graphs.</strong> 2018. <a href="https://arxiv.org/abs/1805.11973" target="_blank" rel="noopener">paper</a></p>
+<p><em>Nicola De Cao, Thomas Kipf.</em></p>
+</li>
+<li>
+<p><strong>GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models.</strong> ICML 2018. <a href="https://arxiv.org/abs/1802.08773" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiaxuan You, Rex Ying, Xiang Ren, William L. Hamilton, Jure Leskovec.</em></p>
+</li>
+<li>
+<p><strong>NetGAN: Generating Graphs via Random Walks.</strong> ICML 2018. <a href="https://arxiv.org/abs/1803.00816" target="_blank" rel="noopener">paper</a></p>
+<p><em>Aleksandar Bojchevski, Oleksandr Shchur, Daniel Zügner, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>Graphite: Iterative Generative Modeling of Graphs.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1803.10459" target="_blank" rel="noopener">paper</a></p>
+<p><em>Aditya Grover, Aaron Zweig, Stefano Ermon.</em></p>
+</li>
+<li>
+<p><strong>Generative Code Modeling with Graphs.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=Bke4KsA5FX" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marc Brockschmidt, Miltiadis Allamanis, Alexander L. Gaunt, Oleksandr Polozov.</em></p>
+</li>
+</ol>
+<h3><span id="combinatorial-optimization"></span></h3>
+<ol>
+<li>
+<p><strong>Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search.</strong> NeurIPS 2018. <a href="http://papers.nips.cc/paper/7335-combinatorial-optimization-with-graph-convolutional-networks-and-guided-tree-search.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhuwen Li, Qifeng Chen, Vladlen Koltun.</em></p>
+</li>
+<li>
+<p><strong>Learning a SAT Solver from Single-Bit Supervision.</strong> ICLR 2019. <a href="https://arxiv.org/abs/1802.03685" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel Selsam, Matthew Lamm, Benedikt Bünz, Percy Liang, Leonardo de Moura, David L. Dill.</em></p>
+</li>
+<li>
+<p><strong>A Note on Learning Algorithms for Quadratic Assignment with Graph Neural Networks.</strong> PADL 2017. <a href="https://www.padl.ws/papers/Paper%2017.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Alex Nowak, Soledad Villar, Afonso S. Bandeira, Joan Bruna.</em></p>
+</li>
+<li>
+<p><strong>Attention Solves Your TSP, Approximately.</strong> 2018. <a href="https://arxiv.org/abs/1803.08475" target="_blank" rel="noopener">paper</a></p>
+<p><em>Wouter Kool, Herke van Hoof, Max Welling.</em></p>
+</li>
+<li>
+<p><strong>Learning to Solve NP-Complete Problems - A Graph Neural Network for Decision TSP.</strong> AAAI 2019. <a href="https://arxiv.org/pdf/1809.02721.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marcelo O. R. Prates, Pedro H. C. Avelar, Henrique Lemos, Luis Lamb, Moshe Vardi.</em></p>
+</li>
+<li>
+<p><strong>DAG-GNN: DAG Structure Learning with Graph Neural Networks.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1904.10098" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yue Yu, Jie Chen, Tian Gao, Mo Yu.</em></p>
+</li>
+</ol>
+<h3><span id="adversarial-attack"></span></h3>
+<ol>
+<li>
+<p><strong>Adversarial Attacks on Neural Networks for Graph Data.</strong> KDD 2018. <a href="http://delivery.acm.org/10.1145/3230000/3220078/p2847-zugner.pdf?ip=101.5.139.169&amp;id=3220078&amp;acc=ACTIVE%20SERVICE&amp;key=BF85BBA5741FDC6E%2E587F3204F5B62A59%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&amp;__acm__=1545706391_e7484be677293ffb5f18b39ce84a0df9" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel Zügner, Amir Akbarnejad, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>Adversarial Attack on Graph Structured Data.</strong> ICML 2018. <a href="https://arxiv.org/abs/1806.02371" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hanjun Dai, Hui Li, Tian Tian, Xin Huang, Lin Wang, Jun Zhu, Le Song.</em></p>
+</li>
+<li>
+<p><strong>Adversarial Examples on Graph Data: Deep Insights into Attack and Defense.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1903.01610.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Huijun Wu, Chen Wang, Yuriy Tyshetskiy, Andrew Docherty, Kai Lu, Liming Zhu.</em></p>
+</li>
+<li>
+<p><strong>Topology Attack and Defense for Graph Neural Networks: An Optimization Perspective.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.04214.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Kaidi Xu, Hongge Chen, Sijia Liu, Pin-Yu Chen, Tsui-Wei Weng, Mingyi Hong, Xue Lin.</em></p>
+</li>
+<li>
+<p><strong>Robust Graph Convolutional Networks Against Adversarial Attacks.</strong> KDD 2019. <a href="http://pengcui.thumedialab.com/papers/RGCN.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Dingyuan Zhu, Ziwei Zhang, Peng Cui, Wenwu Zhu.</em></p>
+</li>
+<li>
+<p><strong>Certifiable Robustness and Robust Training for Graph Convolutional Networks.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1906.12269" target="_blank" rel="noopener">paper</a></p>
+<p><em>Daniel Zügner, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>Adversarial Attacks on Node Embeddings via Graph Poisoning.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1809.01093" target="_blank" rel="noopener">paper</a></p>
+<p><em>Aleksandar Bojchevski, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>Adversarial Attacks on Graph Neural Networks via Meta Learning.</strong> ICLR 2019. <a href="">paper</a></p>
+<p><em>Daniel Zügner, Stephan Günnemann.</em></p>
+</li>
+<li>
+<p><strong>PeerNets: Exploiting Peer Wisdom Against Adversarial Attacks.</strong> ICLR 2019. <a href="https://openreview.net/pdf?id=Sk4jFoA9K7" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jan Svoboda, Jonathan Masci, Federico Monti, Michael Bronstein, Leonidas Guibas.</em></p>
+</li>
+</ol>
+<h3><span id="graph-clustering"></span></h3>
+<ol>
+<li>
+<p><strong>Attributed Graph Clustering: A Deep Attentional Embedding Approach.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.06532.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chun Wang, Shirui Pan, Ruiqi Hu, Guodong Long, Jing Jiang, Chengqi Zhang.</em></p>
+</li>
+<li>
+<p><strong>Attributed Graph Clustering via Adaptive Graph Convolution.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.01210.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaotong Zhang, Han Liu, Qimai Li, Xiao-Ming Wu.</em></p>
+</li>
+</ol>
+<h3><span id="graph-classification"></span></h3>
+<ol>
+<li>
+<p><strong>Contextual Graph Markov Model: A Deep and Generative Approach to Graph Processing.</strong> ICML 2018. <a href="https://arxiv.org/pdf/1805.10636.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Davide Bacciu, Federico Errica, Alessio Micheli.</em></p>
+</li>
+<li>
+<p><strong>Semi-Supervised Graph Classification: A Hierarchical Graph Perspective.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1904.05003.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jia Li, Yu Rong, Hong Cheng, Helen Meng, Wenbing Huang, Junzhou Huang.</em></p>
+</li>
+<li>
+<p><strong>DDGK: Learning Graph Representations for Deep Divergence Graph Kernels.</strong> WWW 2019. <a href="https://arxiv.org/pdf/1904.09671.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Rami Al-Rfou, Dustin Zelle, Bryan Perozzi.</em></p>
+</li>
+<li>
+<p><strong>Unsupervised Inductive Graph-Level Representation Learning via Graph-Graph Proximity.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1904.01098.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yunsheng Bai, Hao Ding, Yang Qiao, Agustin Marinovic, Ken Gu, Ting Chen, Yizhou Sun, Wei Wang.</em></p>
+</li>
+</ol>
+<h3><span id="reinforcement-learning"></span></h3>
+<ol>
+<li>
+<p><strong>NerveNet: Learning Structured Policy with Graph Neural Networks.</strong> ICLR 2018. <a href="https://openreview.net/pdf?id=S1sqHMZCb" target="_blank" rel="noopener">paper</a></p>
+<p><em>Tingwu Wang, Renjie Liao, Jimmy Ba, Sanja Fidler.</em></p>
+</li>
+<li>
+<p><strong>Structured Dialogue Policy with Graph Neural Networks.</strong> ICCL 2018. <a href="http://www.aclweb.org/anthology/C18-1107" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lu Chen, Bowen Tan, Sishan Long, Kai Yu.</em></p>
+</li>
+<li>
+<p><strong>Relational inductive bias for physical construction in humans and machines.</strong> CogSci 2018. <a href="https://arxiv.org/abs/1806.01203" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jessica B. Hamrick, Kelsey R. Allen, Victor Bapst, Tina Zhu, Kevin R. McKee, Joshua B. Tenenbaum, Peter W. Battaglia.</em></p>
+</li>
+<li>
+<p><strong>Relational Deep Reinforcement Learning.</strong> arxiv 2018. <a href="https://arxiv.org/abs/1806.01830" target="_blank" rel="noopener">paper</a></p>
+<p><em>Vinicius Zambaldi, David Raposo, Adam Santoro, Victor Bapst, Yujia Li, Igor Babuschkin, Karl Tuyls, David Reichert, Timothy Lillicrap, Edward Lockhart, Murray Shanahan, Victoria Langston, Razvan Pascanu, Matthew Botvinick, Oriol Vinyals, Peter Battaglia.</em></p>
+</li>
+<li>
+<p><strong>Playing Text-Adventure Games with Graph-Based Deep Reinforcement Learning.</strong> NAACL 2019. <a href="https://arxiv.org/pdf/1812.01628.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Prithviraj Ammanabrolu, Mark O. Riedl.</em></p>
+</li>
+</ol>
+<h3><span id="traffic-network"></span></h3>
+<ol>
+<li>
+<p><strong>Spatiotemporal Multi‐Graph Convolution Network for Ride-hailing Demand Forecasting.</strong> AAAI 2019. <a href="http://www-scf.usc.edu/~yaguang/papers/aaai19_multi_graph_convolution.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xu Geng, Yaguang Li, Leye Wang, Lingyu Zhang, Qiang Yang, Jieping Ye, Yan Liu.</em></p>
+</li>
+<li>
+<p><strong>Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting.</strong> AAAI 2019. <a href="https://github.com/Davidham3/ASTGCN/blob/master/papers/2019%20AAAI_Attention%20Based%20Spatial-Temporal%20Graph%20Convolutional%20Networks%20for%20Traffic%20Flow%20Forecasting.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, Huaiyu Wan.</em></p>
+</li>
+<li>
+<p><strong>Traffic Graph Convolutional Recurrent Neural Network: A Deep Learning Framework for Network-Scale Traffic Learning and Forecasting.</strong> arxiv 2018. <a href="https://arxiv.org/pdf/1802.07007.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zhiyong Cui, Kristian Henrickson, Ruimin Ke, Yinhai Wang.</em></p>
+</li>
+<li>
+<p><strong>Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting.</strong> IJCAI 2018. <a href="https://arxiv.org/pdf/1709.04875.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Bing Yu, Haoteng Yin, Zhanxing Zhu.</em></p>
+</li>
+<li>
+<p><strong>Origin-Destination Matrix Prediction via Graph Convolution: a New Perspective of Passenger Demand Modeling.</strong> KDD 2019. <a href="https://www.dropbox.com/s/erz0b9c13aeoelj/KDD19-Yuandong.pdf?dl=0" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yuandong Wang, Hongzhi Yin, Hongxu Chen, Tianyu Wo, Jie Xu, Kai Zheng.</em></p>
+</li>
+<li>
+<p><strong>Predicting Path Failure In Time-Evolving Graphs.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.03994" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jia Li, Zhichao Han, Hong Cheng, Jiao Su, Pengyun Wang, Jianfeng Zhang, Lujia Pan.</em></p>
+</li>
+<li>
+<p><strong>Stochastic Weight Completion for Road Networks using Graph Convolutional Networks.</strong> ICDE 2019. <a href="http://people.cs.aau.dk/~byang/papers/ICDE2019-GCWC.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jilin Hu, Chenjuan Guo, Bin Yang, Christian S. Jensen.</em></p>
+</li>
+<li>
+<p><strong>STG2Seq: Spatial-temporal Graph to Sequence Model for Multi-step Passenger Demand Forecasting.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1905.10069.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lei Bai, Lina Yao, Salil.S Kanhere, Xianzhi Wang, Quan.Z Sheng.</em></p>
+</li>
+<li>
+<p><strong>Graph WaveNet for Deep Spatial-Temporal Graph Modeling.</strong> IJCAI 2019. <a href="https://shiruipan.github.io/pdf/IJCAI-19-graph-wavenet.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, Chengqi Zhang.</em></p>
+</li>
+</ol>
+<h3><span id="few-shot-and-zero-shot-learning"></span></h3>
+<ol>
+<li>
+<p><strong>Few-Shot Learning with Graph Neural Networks.</strong> ICLR 2018. <a href="https://arxiv.org/pdf/1711.04043.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Victor Garcia, Joan Bruna.</em></p>
+</li>
+<li>
+<p><strong>Prototype Propagation Networks (PPN) for Weakly-supervised Few-shot Learning on Category Graph.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1905.04042.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Lu Liu, Tianyi Zhou, Guodong Long, Jing Jiang, Lina Yao, Chengqi Zhang.</em></p>
+</li>
+<li>
+<p><strong>Edge-labeling Graph Neural Network for Few-shot Learning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1905.01436.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jongmin Kim, Taesup Kim, Sungwoong Kim, Chang D. Yoo.</em></p>
+</li>
+<li>
+<p><strong>Generating Classification Weights with GNN Denoising Autoencoders for Few-Shot Learning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1905.01102.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Spyros Gidaris, Nikos Komodakis.</em></p>
+</li>
+<li>
+<p><strong>Zero-shot Recognition via Semantic Embeddings and Knowledge Graphs.</strong> CVPR 2018. <a href="https://arxiv.org/pdf/1803.08035.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiaolong Wang, Yufei Ye, Abhinav Gupta.</em></p>
+</li>
+<li>
+<p><strong>Rethinking Knowledge Graph Propagation for Zero-Shot Learning.</strong> CVPR 2019. <a href="https://arxiv.org/pdf/1805.11724.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Michael Kampffmeyer, Yinbo Chen, Xiaodan Liang, Hao Wang, Yujia Zhang, Eric P. Xing.</em></p>
+</li>
+<li>
+<p><strong>Multi-Label Zero-Shot Learning with Structured Knowledge Graphs.</strong> CVPR 2018. <a href="https://arxiv.org/pdf/1711.06526.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chung-Wei Lee, Wei Fang, Chih-Kuan Yeh, Yu-Chiang Frank Wang.</em></p>
+</li>
+</ol>
+<h3><span id="reinforcement-learning"></span></h3>
+<ol>
+<li>
+<p><strong>Relational inductive bias for physical construction in humans and machines.</strong> CogSci 2018. <a href="https://arxiv.org/abs/1806.01203" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jessica B. Hamrick, Kelsey R. Allen, Victor Bapst, Tina Zhu, Kevin R. McKee, Joshua B. Tenenbaum, Peter W. Battaglia.</em></p>
+</li>
+<li>
+<p><strong>Relational Deep Reinforcement Learning.</strong> arxiv 2018. <a href="https://arxiv.org/abs/1806.01830" target="_blank" rel="noopener">paper</a></p>
+<p><em>Vinicius Zambaldi, David Raposo, Adam Santoro, Victor Bapst, Yujia Li, Igor Babuschkin, Karl Tuyls, David Reichert, Timothy Lillicrap, Edward Lockhart, Murray Shanahan, Victoria Langston, Razvan Pascanu, Matthew Botvinick, Oriol Vinyals, Peter Battaglia.</em></p>
+</li>
+<li>
+<p><strong>Action Schema Networks: Generalised Policies with Deep Learning.</strong> AAAI 2018. <a href="https://arxiv.org/abs/1709.04271" target="_blank" rel="noopener">paper</a></p>
+<p><em>Sam Toyer, Felipe Trevizan, Sylvie Thiébaux, Lexing Xie.</em></p>
+</li>
+</ol>
+<h3><span id="program-representation"></span></h3>
+<ol>
+<li>
+<p><strong>Learning to Represent Programs with Graphs.</strong> ICLR 2018. <a href="https://arxiv.org/abs/1711.00740" target="_blank" rel="noopener">paper</a></p>
+<p><em>Miltiadis Allamanis, Marc Brockschmidt, Mahmoud Khademi.</em></p>
+</li>
+<li>
+<p><strong>Open Vocabulary Learning on Source Code with a Graph-Structured Cache.</strong> ICML 2019. <a href="https://arxiv.org/pdf/1810.08305" target="_blank" rel="noopener">paper</a></p>
+<p><em>Milan Cvitkovic, Badal Singh, Anima Anandkumar.</em></p>
+</li>
+</ol>
+<h3><span id="social-network"></span></h3>
+<ol>
+<li>
+<p><strong>DeepInf: Social Influence Prediction with Deep Learning.</strong> KDD 2018. <a href="https://arxiv.org/pdf/1807.05560.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Jiezhong Qiu, Jian Tang, Hao Ma, Yuxiao Dong, Kuansan Wang, Jie Tang.</em></p>
+</li>
+<li>
+<p><strong>Characterizing and Forecasting User Engagement with In-app Action Graph: A Case Study of Snapchat.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1906.00355" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yozen Liu, Xiaolin Shi, Lucas Pierce, Xiang Ren.</em></p>
+</li>
+<li>
+<p><strong>MCNE: An End-to-End Framework for Learning Multiple Conditional Network Representations of Social Network.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.11013" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hao Wang, Tong Xu, Qi Liu, Defu Lian, Enhong Chen, Dongfang Du, Han Wu, Wen Su.</em></p>
+</li>
+<li>
+<p><strong>Is a Single Vector Enough? Exploring Node Polysemy for Network Embedding.</strong> KDD 2019. <a href="https://arxiv.org/pdf/1905.10668" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ninghao Liu, Qiaoyu Tan, Yuening Li, Hongxia Yang, Jingren Zhou, Xia Hu.</em></p>
+</li>
+<li>
+<p><strong>Encoding Social Information with Graph Convolutional Networks for Political Perspective Detection in News Media.</strong> ACL 2019. <a href="https://www.cs.purdue.edu/homes/dgoldwas//downloads/papers/LiG_acl_2019.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Chang Li, Dan Goldwasser.</em></p>
+</li>
+<li>
+<p><strong>Fine-grained Event Categorization with Heterogeneous Graph Convolutional Networks.</strong> IJCAI 2019. <a href="https://arxiv.org/pdf/1906.04580.pdf" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hao Peng, Jianxin Li, Qiran Gong, Yangqiu Song, Yuanxing Ning, Kunfeng Lai, Philip S. Yu.</em></p>
+</li>
+</ol>
+<h3><span id="community-detection"></span></h3>
+<ol>
+<li>
+<p><strong>Community Detection with Graph Neural Networks.</strong> LCLR 2018. <a href="https://arxiv.org/pdf/1705.08415.pdf" target="_blank" rel="noopener">paper</a> <a href="https://github.com/afansi/multiscalegnn" target="_blank" rel="noopener">code</a></p>
+<p><em>Zhengdao Chen, Xiang Li, Joan Bruna.</em></p>
+</li>
+</ol>
+<h2><span id="heterogeneous-graph"></span></h2>
+<h3><span id="heterogeneous-graph-neural-network"></span></h3>
+<ol>
+<li>
+<p><strong>Metapath-guided Heterogeneous Graph Neural Network for Intent Recommendation.</strong> KDD 2019. <a href="https://dl.acm.org/citation.cfm?id=3330673" target="_blank" rel="noopener">paper</a></p>
+<p><em>Shaohua Fan, Junxiong Zhu, Xiaotian Han, Chuan Shi, Linmei Hu, Biyu Ma, Yongliang Li.</em></p>
+</li>
+<li>
+<p><strong>Heterogeneous Graph Neural Network.</strong> KDD 2019</p>
+<p><em>Chuxu Zhang, Dongjin Song, Chao Huang, Ananthram Swami, Nitesh V. Chawla.</em></p>
+</li>
+<li>
+<p><strong>Fine-grained Event Categorization with Heterogeneous Graph Convolutional.</strong> IJCAI 2019. <a href="https://arxiv.org/abs/1906.04580" target="_blank" rel="noopener">paper</a></p>
+<p><em>Hao Peng, Jianxin Li, Qiran Gong, Yangqiu Song, Yuanxing Ning, Kunfeng Lai  and Philip S. Yu</em></p>
+</li>
+<li>
+<p><strong>Heterogeneous Graph Attention Network.</strong> WWW 2019. <a href="https://github.com/Jhy1993/HAN" target="_blank" rel="noopener">paper</a></p>
+<p><em>Xiao Wang, Houye Ji, Chuan Shi, Bai Wang, Peng Cui, Philip S. Yu, Yanfang Ye.</em></p>
+</li>
+<li>
+<p><strong>Deep Collective Classification in Heterogeneous Information Networks.</strong> WWW 2018. <a href="https://dl.acm.org/citation.cfm?id=3186106" target="_blank" rel="noopener">paper</a></p>
+<p><em>Yizhou Zhang, Yun Xiong, Xiangnan Kong, Shanshan Li, Jinhong Mi, Yangyong Zhu.</em></p>
+</li>
+<li>
+<p><strong>Heterogeneous Graph Neural Networks for Malicious Account Detection.</strong> CIKM 2018.   <a href="https://dl.acm.org/citation.cfm?id=3272010" target="_blank" rel="noopener">paper</a></p>
+<p><em>Ziqi Liu, Chaochao Chen, Xinxing Yang, Jun Zhou, Xiaolong Li, Le Song.</em></p>
+</li>
+<li>
+<p><strong>Modeling polypharmacy side effects with graph convolutional networks</strong> ISMB 2018 <a href="https://arxiv.org/abs/1802.00543" target="_blank" rel="noopener">paper</a></p>
+<p><em>Marinka Zitnik, Monica Agrawal, Jure Leskovec.</em></p>
+</li>
+</ol>
+<h3><span id="heterogeneous-graph-embedding"></span></h3>
+<ol>
+<li>Yu He, Yangqiu Song, Jianxin Li, Cheng Ji, Jian Peng, Hao Peng. <strong>HeteSpaceyWalk: A Heterogeneous Spacey Random Walk for Heterogeneous Information Network Embedding</strong> CIKM 2019</li>
+<li>Yukuo Cen, Xu Zou, Jianwei Zhang , Hongxia Yang, Jingren Zhou, Jie Tang. <strong>Representation Learning for Attributed Multiplex Heterogeneous Network.</strong> KDD 2019. <a href="https://arxiv.org/abs/1905.01669" target="_blank" rel="noopener">paper</a></li>
+<li>Xiao Wang, Yiding Zhang, Chuan Shi. <strong>Hyperbolic Heterogeneous Information Network Embedding.</strong> AAAI 2019. <a href="http://shichuan.org/doc/65.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Sheng Zhou, Jiajun Bu, Xin Wang, Jiawei Chen, Bingbing Hu, Defang Chen, Can Wang. <strong>HAHE: Hierarchical Attentive Heterogeneous Information Network Embedding.</strong> ArXiv 2019. <a href="https://arxiv.org/abs/1902.01475" target="_blank" rel="noopener">paper</a></li>
+<li>Yuanfu Lu, Chuan Shi, Linmei Hu, Zhiyuan Liu. <strong>Relation Structure-Aware Heterogeneous Information Network Embedding.</strong> AAAI 2019. <a href="http://shichuan.org/doc/63.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Houye Ji, Chuan Shi. <strong>Attention Based Meta Path Fusion for Heterogeneous Information Network Embedding.</strong> PRICAI 2018. <a href="http://shichuan.org/doc/55.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Hongxu Chen, Hongzhi Yin, Weiqing Wang, Hao Wang, Quoc Viet Hung Nguyen, Xue Li. <strong>PME: Projected Metric Embedding on Heterogeneous Networks for Link Prediction.</strong> KDD 2018 <a href="http://net.pku.edu.cn/daim/hongzhi.yin/papers/KDD18-Hongxu.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Yu Shi, Qi Zhu, Fang Guo, Chao Zhang, Jiawei Han.  <strong>Easing Embedding Learning by Comprehensive Transcription of Heterogeneous Information Networks</strong>.  KDD 2018. <a href="https://arxiv.org/abs/1807.03490" target="_blank" rel="noopener">paper</a></li>
+<li>Yu Shi, Huan Gui, Qi Zhu, Lance Kaplan, Jiawei Han. <strong>ASPEM：Embedding Learning by Aspects in Heterogeneous Information Networks.</strong> SDM 2018 <a href="http://yushi2.web.engr.illinois.edu/sdm18.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Ke Tu, Peng Cui, Xiao Wang, Fei Wang, Wenwu Zhu. <strong>Structural Deep Embedding for Hyper-Networks</strong> AAAI 2018. <a href="https://arxiv.org/abs/1711.10146" target="_blank" rel="noopener">paper</a></li>
+<li>Rana Hussein, Dingqi Yang, Philippe Cudré-Mauroux.  <strong>Are Meta-Paths Necessary? Revisiting Heterogeneous Graph Embeddings.</strong> CIKM 2018. <a href="https://dl.acm.org/citation.cfm?id=3271777" target="_blank" rel="noopener">paper</a></li>
+<li>Hongwei Wang, Fuzheng Zhang, Min Hou, Xing Xie, Minyi Guo, Qi Liu. <strong>Signed Heterogeneous Information Network Embedding for Sentiment Link Prediction.</strong> WSDM 2018 <a href="https://arxiv.org/pdf/1712.00732" target="_blank" rel="noopener">paper</a></li>
+<li>Meng Qu, Jian Tang, Jiawei Han. <strong>Curriculum Learning for Heterogeneous Star Network Embedding via Deep Reinforcement Learning.</strong> WSDM 2018.<a href="http://hanj.cs.illinois.edu/pdf/wsdm18_mqu.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Tao-yang Fu, Wang-Chien Lee, Zhen Lei. <strong>HIN2Vec: Explore Meta-paths in Heterogeneous Information Networks for Representation Learning</strong> CIKM 2017 <a href="http://shichuan.org/hin/topic/Embedding/2017.%20CIKM%20HIN2Vec.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Yuxiao Dong, Nitesh V. Chawla, Ananthram Swami. <strong>metapath2vec: Scalable Representation Learning for Heterogeneous Networks</strong> KDD 2017</li>
+<li>Huan Gui, Jialu Liu, Fangbo Tao, Meng Jiang, Brandon Norick, Lance Kaplan, and Jiawei Han. <strong>Embedding Learning with Events in Heterogeneous Information Networks.</strong> TKDE 2017.</li>
+<li>Linchuan Xu, Xiaokai Wei, Jianong Cao, Philip S. Yu. <strong>Embedding of Embedding  Joint Embedding for Coupled Heterogeneous Networks.</strong> WSDM 2017.</li>
+<li>Ludovic Dos Santos, Benjamin Piwowarski, Patrick Gallinari. <strong>Multilabel classification on heterogeneous graphs with gaussian embeddings.</strong> ECML 2016. <a href="https://link.springer.com/chapter/10.1007/978-3-319-46227-1_38" target="_blank" rel="noopener">paper</a></li>
+<li>Jian Tang, Meng Qu, Qiaozhu Mei. <strong>PTE: Predictive Text Embedding through Large-scale Heterogeneous Text Networks.</strong> KDD 2015. <a href="http://dl.acm.org/citation.cfm?id=2783307" target="_blank" rel="noopener">paper</a></li>
+<li>Shiyu Chang, Wei Han, Jiliang Tang, Guo-Jun Qi, Charu C. Aggarwal, Thomas S. Huang. <strong>Heterogeneous Network Embedding via Deep Architectures</strong> KDD 2015 <a href="https://dl.acm.org/citation.cfm?doid=2783258.2783296" target="_blank" rel="noopener">paper</a></li>
+<li>Daokun Zhang, Jie Yin, Xingquan Zhu, and Chengqi Zhang. <strong>MetaGraph2Vec: Complex Semantic Path Augmented Heterogeneous Network Embedding</strong> PAKDD 2018.  <a href="https://arxiv.org/pdf/1803.02533.pdf" target="_blank" rel="noopener">paper</a></li>
+</ol>
+<h3><span id="heterogeneous-graph-application"></span></h3>
+<ol>
+<li>Yuyan Zheng, Chuan Shi, Xiangnan Kong, Yanfang Ye.<strong>Author Set Identification via Quasi-Clique Discovery.</strong> CIKM 2019 <a href="http://shichuan.org/doc/72.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Yongji Wu, Defu Lian, Shuowei Jin and Enhong Chen. <strong>Graph Convolutional Networks on User Mobility Heterogeneous Graphs for Social Relationship Inference</strong> IJCAI 2019</li>
+<li>Yanfang Ye, Shifu Hou, Lingwei Chen, Jingwei Lei, Wenqiang Wan, Jiabin Wang, Qi Xiong, and Fudong Shao .<strong>Out-of-sample Node Representation Learning for Heterogeneous Graph in</strong><br>
+<strong>Real-time Android Malware Detection</strong> IJCAI 2019</li>
+<li>Weijian Chen, Yulong Gu, Zhaochun Ren , Xiangnan He, Hongtao Xie, Tong Guo, Dawei Yin and Yongdong Zhang.<strong>Semi-supervised User Profiling with Heterogeneous Graph Attention Networks</strong> IJCAI 2019</li>
+<li>Yanan Xu, Yanmin Zhu, Yanyan Shen and Jiadi Yu. <strong>Learning Shared Vertex Representation in Heterogeneous Graphs with</strong><br>
+<strong>Convolutional Networks for Recommendation</strong> IJCAI 2019</li>
+<li>Shen Wang,  Zhengzhang Chen 2, Xiao Yu, Ding Li, Jingchao Ni, Lu-An Tang, Jiaping Gui, Zhichun Li, Haifeng Chen, Philip S. Yu. <strong>Heterogeneous Graph Matching Networks for Unknown Malware Detection</strong> IJCAI 2019</li>
+<li>Linmei Hu, Tianchi Yang, Chuan Shi, Houye Ji, Xiaoli Li.<strong>Heterogeneous Graph Attention Networks for Semi-supervised Short Text Classification.</strong> EMNLP 2019. <a href="http://shichuan.org/doc/73.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Chuan Shi, Xiaotian Han, Li Song, Xiao Wang, Senzhang Wang, Junping Du, Philip S. Yu.<strong>Deep Collaborative Filtering with Multi-Aspect Information in Heterogeneous Networks.</strong> TKDE 2019. <a href="http://shichuan.org/doc/75.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Yiming Zhang, Yujie Fan, Wei Song, Shifu Hou, Yanfang Ye, Xin Li, Liang Zhao, Chuan Shi, Jiabin Wang, Qi Xiong.<strong>Your Style Your Identity: Leveraging Writing and Photography Styles for Drug Trafficker Identification in Darknet Markets over Attributed Heterogeneous Information Network.</strong> WWW 2019 <a href="http://shichuan.org/doc/69.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Binbin Hu, Zhiqiang Zhang, Chuan Shi, Jun Zhou, Xiaolong Li, Yuan Qi. <strong>Cash-out User Detection based on Attributed Heterogeneous Information Network with a Hierarchical Attention Mechanism.</strong> AAAI 2019. <a href="http://shichuan.org/doc/64.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Shaohua Fan, Chuan Shi, Xiao Wang. <strong>Abnormal Event Detection via Heterogeneous Information Network Embedding.</strong> CIKM 2018. <a href="http://shichuan.org/doc/62.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Yujie Fan, Shifu Hou, Yiming Zhang, Yanfang Ye, Melih Abdulhayoglu <strong>Gotcha - Sly Malware! Scorpion: A Metagraph2vec Based Malware Detection System.</strong> KDD 2018.</li>
+<li>Zemin Liu, Vicent W. Zheng, Zhou Zhao, Zhao Li, Hongxia Yang, Minghui Wu, Jing Ying.  <strong>Interactive Paths Embedding for Semantic Proximity Search on Heterogeneous Graphs.</strong> KDD 2018</li>
+<li>Vincent W. ZHENG, Mo SHA Yuchen LI, Hongxia YANG, Zhenjie ZHANG, Kian-Lee TAN. <strong>Heterogeneous embedding propagation for large-scale e-commerce user alignment</strong> ICDM 2018. <a href="https://ink.library.smu.edu.sg/sis_research/4217/" target="_blank" rel="noopener">paper</a></li>
+<li>Chuan Shi, Binbin Hu, Wayne Xin Zhao, Philip S. Yu. <strong>Heterogeneous Information Network Embedding for Recommendation.</strong> IEEE Transactions on Knowledge and Data Engineering, 2018. <a href="http://shichuan.org/doc/48.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Binbin Hu, Chuan Shi, Wayne Xin Zhao, Philip S. Yu. <strong>Leveraging Meta-path based Context for Top-N Recommendation with A Neural Co-Attention Model.</strong> KDD 2018. <a href="http://shichuan.org/doc/47.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Binbin Hu, Chuan Shi, Wayne Xin Zhao, Tianchi Yang. <strong>Local and Global Information Fusion for Top-N Recommendation in Heterogeneous Information Network.</strong> CIKM 2018. <a href="http://shichuan.org/doc/61.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Xiaotian Han, Chuan Shi, Senzhang Wang, Philip S. Yu, Li Song. <strong>Aspect-Level Deep Collaborative Filtering via Heterogeneous Information Networks.</strong> IJCAI 2018. <a href="http://shichuan.org/doc/46.pdf" target="_blank" rel="noopener">paper</a></li>
+<li>Zemin Liu, Vicent W. Zheng, Zhou Zhao, Hongxia Yang, Kevin Chen-Chuan Chang, Minghui Wu, Jing Ying. <strong>SPE_Subgraph-augmented Path Embedding for Semantic User Search on Heterogeneous Social Network.</strong> WWW 2018.</li>
+<li>Zemin Liu, Vincent W. Zheng, Zhou Zhao, Fanwei Zhu, Kevin Chen-Chuan Chang, Minghui Wu, Jing Ying. <strong>Distance-aware DAG Embedding for Proximity Search on Heterogeneous Graphs.</strong> AAAI 2018</li>
+<li>Ting Chen, Yizhou Sun. <strong>Task-Guided and Path-Augmented Heterogeneous Network Embedding for Author Identification</strong>  WSDM 2017. <a href="https://arxiv.org/pdf/1612.02814.pdf" target="_blank" rel="noopener">paper</a></li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Graph-U-Nets/" data-toggle="tooltip" data-placement="top" title="[Paper] Graph U-Nets">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/GraphGAN-Graph-Representation-Learning-with-Generative-Adversarial-Nets/" data-toggle="tooltip" data-placement="top" title="[Paper] GraphGAN: Graph Representation Learning with Generative Adversarial Nets">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/payment/aipay.png"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/payment/wechat.png"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">赞赏一下</p>
+                    </div>
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="must-read-papers-on-gnn">Must-read papers on GNN</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="content"></span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="survey-papers"></span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="models"></span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"><span id="basic-models"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text"><span id="graph-types"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text"><span id="pooling-methods"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text"><span id="analysis"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text"><span id="efficiency"></span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text"><span id="applications"></span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text"><span id="physics"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"><span id="chemistry-and-biology"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text"><span id="knowledge-graph"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text"><span id="recommender-systems"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text"><span id="computer-vision"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text"><span id="natural-language-processing"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.7.</span> <span class="toc-nav-text"><span id="generation"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.8.</span> <span class="toc-nav-text"><span id="combinatorial-optimization"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.9.</span> <span class="toc-nav-text"><span id="adversarial-attack"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.10.</span> <span class="toc-nav-text"><span id="graph-clustering"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.11.</span> <span class="toc-nav-text"><span id="graph-classification"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.12.</span> <span class="toc-nav-text"><span id="reinforcement-learning"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.13.</span> <span class="toc-nav-text"><span id="traffic-network"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.14.</span> <span class="toc-nav-text"><span id="few-shot-and-zero-shot-learning"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.15.</span> <span class="toc-nav-text"><span id="reinforcement-learning"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.16.</span> <span class="toc-nav-text"><span id="program-representation"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.17.</span> <span class="toc-nav-text"><span id="social-network"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.18.</span> <span class="toc-nav-text"><span id="community-detection"></span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text"><span id="heterogeneous-graph"></span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text"><span id="heterogeneous-graph-neural-network"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text"><span id="heterogeneous-graph-embedding"></span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text"><span id="heterogeneous-graph-application"></span></span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Papers" title="Papers">Papers</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                    
+                        <li><a href="http://datascience.fudan.edu.cn/" target="_blank">Site</a></li>
+                    
+                        <li><a href="https://www.google.com/" target="_blank">Search</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/copper">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Cooper
+                    <br>
+                    Sometimes Ever &copy; Sometimes Never
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.gnn.wiki/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.gnn.wiki/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>
