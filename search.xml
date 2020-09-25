@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[text]]></title>
+    <url>%2Farticle%2Ftext%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[GPT-GNN]]></title>
     <url>%2Farticle%2FGPT-GNN%2F</url>
     <content type="text"><![CDATA[KDD2020. GPT-GNN GPT-GNN Presenters: 焦乙竹]]></content>

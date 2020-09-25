@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.gnn.wiki/article/text/</loc>
+        <lastmod>2020-09-25T01:45:04.306Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.gnn.wiki/article/vGraph-A-Generative-Model-for-Joint-Community-Detection-and-Node-Representation-learning/</loc>
         <lastmod>2020-09-25T00:59:19.227Z</lastmod>
         <changefreq>weekly</changefreq>
