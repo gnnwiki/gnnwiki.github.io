@@ -135,13 +135,6 @@
     </url>
 
     <url>
-        <loc>http://www.gnn.wiki/tags/Survey/</loc>
-        <lastmod>2020-09-25T00:59:19.226Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.gnn.wiki/tags/Representation-learning/</loc>
         <lastmod>2020-09-25T00:59:19.227Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -151,6 +144,13 @@
     <url>
         <loc>http://www.gnn.wiki/tags/Community-Detection/</loc>
         <lastmod>2020-09-25T00:59:19.227Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.gnn.wiki/tags/Survey/</loc>
+        <lastmod>2020-09-25T01:38:04.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

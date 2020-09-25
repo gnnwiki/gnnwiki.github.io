@@ -7,8 +7,24 @@
     </url>
 
     <url>
-        <loc>http://www.gnn.wiki/article/pagename/</loc>
-        <lastmod>2020-09-25T01:07:10.315Z</lastmod>
+        <loc>http://www.gnn.wiki/article/test-1/</loc>
+        <lastmod>2020-09-25T01:38:04.541Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.gnn.wiki/article/test/</loc>
+        <lastmod>2020-09-25T01:37:05.337Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.gnn.wiki/article/test-md/</loc>
+        <lastmod>2020-09-25T01:31:19.503Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
