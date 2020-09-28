@@ -9,14 +9,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[GPT-GNN]]></title>
-    <url>%2Farticle%2FGPT-GNN%2F</url>
-    <content type="text"><![CDATA[KDD2020. GPT-GNN GPT-GNN Presenters: 焦乙竹]]></content>
-      <tags>
-        <tag>Pre-train</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Hyperbolic Graph Convolutional Neural Networks]]></title>
     <url>%2Farticle%2FHyperbolic-Graph-Convolutional-Neural-Networks%2F</url>
     <content type="text"><![CDATA[NIPS 2019 Hyperbolic Graph Convolutional Neural Networks Presenters: 谢毅]]></content>
